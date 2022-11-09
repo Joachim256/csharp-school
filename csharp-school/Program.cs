@@ -24,7 +24,7 @@
 		Console.WriteLine("váží " + vaha + " kg a měří " + vyska + " cm. ");
 		Console.WriteLine();
 
-        Console.WriteLine(jmeno + " již měl " + vek + ". narozeniny, \nváží " + vaha + " kg a měří " + vyska + " cm. \n");
+        // Console.WriteLine(jmeno + " již měl " + vek + ". narozeniny, \nváží " + vaha + " kg a měří " + vyska + " cm. \n");
 		Console.WriteLine("{0} má {1} let, \nváží {2} kg a měří {3} cm.", jmeno, vek, vaha, vyska);
 	}
 }
