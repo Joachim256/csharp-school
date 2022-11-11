@@ -4,6 +4,8 @@
 		int druheCislo = 0;
 		int tretiCislo = 0;
 
+		Console.WriteLine("Tento program po zadání tří čísel vypíše, které je největší.");
+
 		try{
 			Console.Write("Zadejte první číslo:");
 			prvniCislo = int.Parse(Console.ReadLine());
@@ -16,5 +18,18 @@
 			return;
 		}
 
+		if(prvniCislo > druheCislo){
+			if(prvniCislo > tretiCislo){
+				Console.WriteLine("První číslo je největší");
+			}else{
+				Console.WriteLine("Třetí číslo je největší");
+			}
+		}else{
+			if(druheCislo > tretiCislo){
+				Console.WriteLine("Druhé číslo je největší");
+			}else{
+				Console.WriteLine("Třetí číslo je největší");
+			}
+		}
 	}
 }
