@@ -7,28 +7,28 @@
 		Console.WriteLine("Tento program po zadání tří čísel vypíše, které je největší.");
 
 		try{
-			Console.Write("Zadejte první číslo:");
+			Console.Write("Zadejte první číslo: ");
 			prvniCislo = int.Parse(Console.ReadLine());
-			Console.Write("Zadejte druhé číslo:");
+			Console.Write("Zadejte druhé číslo: ");
 			druheCislo = int.Parse(Console.ReadLine());
-			Console.Write("Zadejte třetí číslo:");
+			Console.Write("Zadejte třetí číslo: ");
 			tretiCislo = int.Parse(Console.ReadLine());
-		}catch(Exeption e){
+		}catch(Exception e){
 			Console.WriteLine("Toto není číslo!");
 			return;
 		}
 
 		if(prvniCislo > druheCislo){
 			if(prvniCislo > tretiCislo){
-				Console.WriteLine("První číslo je největší");
+				Console.WriteLine("Číslo {0} je největší", prvniCislo);
 			}else{
-				Console.WriteLine("Třetí číslo je největší");
+				Console.WriteLine("Číslo {0} je největší", tretiCislo);
 			}
 		}else{
 			if(druheCislo > tretiCislo){
-				Console.WriteLine("Druhé číslo je největší");
+				Console.WriteLine("Číslo {0} je největší", druheCislo);
 			}else{
-				Console.WriteLine("Třetí číslo je největší");
+				Console.WriteLine("Číslo {0} je největší", tretiCislo);
 			}
 		}
 	}
