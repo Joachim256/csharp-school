@@ -3,8 +3,8 @@
 		int prvniCislo = 0;
 		int druheCislo = 0;
 		int tretiCislo = 0;
-
-		Console.WriteLine("Tento program po zadání tří čísel vypíše, které je největší.");
+		
+		Console.WriteLine("Tento program po zadání tří čísel vypíše zadaná čísla seřazena od největšího po nejmenší.");
 
 		try{
 			Console.Write("Zadejte první číslo: ");
@@ -17,19 +17,20 @@
 			Console.WriteLine("Toto není číslo!");
 			return;
 		}
+		
+		int[] input = {prvniCislo, druheCislo, tretiCislo};
+		int[] output = new int[3];
 
-		if(prvniCislo > druheCislo){
-			if(prvniCislo > tretiCislo){
-				Console.WriteLine("Číslo {0} je největší", prvniCislo);
-			}else{
-				Console.WriteLine("Číslo {0} je největší", tretiCislo);
+		for (int i = 0; i < 3; i++){
+			int nejvetsi = int.MinValue;
+			for (int j = 0; j < 3; j++){
+				if (input[j] > nejvetsi){
+					nejvetsi = input[j];
+				}
 			}
-		}else{
-			if(druheCislo > tretiCislo){
-				Console.WriteLine("Číslo {0} je největší", druheCislo);
-			}else{
-				Console.WriteLine("Číslo {0} je největší", tretiCislo);
-			}
+			output[i] = nejvetsi;
 		}
+
+		Console.WriteLine("Čísla v pořadí od největší po nejmenší jsou: {0}, {1}, {2}", output[0], output[1], output[2]);
 	}
 }
