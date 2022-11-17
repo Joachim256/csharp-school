@@ -23,7 +23,7 @@
 
 		for (int i = 0; i < 3; i++){
 			int nejvetsi = int.MinValue;
-			int nejvetsiIndex;
+			int nejvetsiIndex = 0;
 			for (int j = 0; j < 3; j++){
 				if (input[j] > nejvetsi){
 					nejvetsi = input[j];
