@@ -23,12 +23,15 @@
 
 		for (int i = 0; i < 3; i++){
 			int nejvetsi = int.MinValue;
+			int nejvetsiIndex;
 			for (int j = 0; j < 3; j++){
 				if (input[j] > nejvetsi){
 					nejvetsi = input[j];
+					nejvetsiIndex = j;
 				}
 			}
 			output[i] = nejvetsi;
+			input[nejvetsiIndex] = int.MinValue;
 		}
 
 		Console.WriteLine("Čísla v pořadí od největší po nejmenší jsou: {0}, {1}, {2}", output[0], output[1], output[2]);
