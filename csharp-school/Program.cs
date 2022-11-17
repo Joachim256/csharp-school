@@ -35,5 +35,7 @@
 		}
 
 		Console.WriteLine("Čísla v pořadí od největší po nejmenší jsou: {0}, {1}, {2}", output[0], output[1], output[2]);
+		Console.WriteLine("Pro ukončení programu zmáčkněte cokoliv...");
+		Console.ReadKey();
 	}
 }
