@@ -1,12 +1,9 @@
-# Úkol 3
+# Úkol 5
 > ... budou vytištěna všechna tři čísla v pořadí od největšího po nejmenší ...
+> ... aby měl co nejméně podmínek (méně než 5) ...
 
-Nakonec jsem implementoval řadicí algoritmus, který lze vyhledat pod názvem *Max sort*.
+Tentokrát jsem implementoval bezcyklovou variantu řadicího algoritmu, který je známý pod názvem *Bubble sort*.
 
-Funguje na principu, kdy z vstupního pole je vždy nalezen prvek s nejvyšší hodnotou a je zařazen nakonec výstupního pole. 
-(Pro zjednodušení jsem daný prvek ve vstupním poli nahradil hodnoutou `int.MinValue`, která bude vždy přeskočena jako `≤ nejvetsi`)
+Funguje tak, že porovnáváme první a druhé číslo, a pokud jsou v nesprávném pořadí, tak je prohodíme. Následně provedeme to stejné s druhým a třetím číslem. Jako poslední porovnáme a popř. prohodíme opět první a druhé číslo. Tímto docílíme seřazení 3 čísel. 
 
-Co se týče jednoduchosti, řekl bych, že jde o jeden z nejjednodušších řadicích algoritmů co do pochopení i implementace.
-Naopak efektivitou je zaručeně mezi nejhoršími (když nepočítáme Bogosort):
-
-O(n²), Ω(n²)
+Prohození čísel v mém programu dosáhnu algoritmem zvaným *XOR swap*. Využívá bitové operace XOR a na rozdíl od tradičního prohazování nevyžaduje dočasnou proměnnou. 

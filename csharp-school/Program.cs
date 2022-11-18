@@ -17,21 +17,24 @@
 			Console.WriteLine("Toto není číslo!");
 			return;
 		}
-		
-		int[] input = {prvniCislo, druheCislo, tretiCislo};
-		int[] output = new int[3];
 
-		for (int i = 0; i < 3; i++){
-			int nejvetsi = int.MinValue;
-			int nejvetsiIndex = 0;
-			for (int j = 0; j < 3; j++){
-				if (input[j] > nejvetsi){
-					nejvetsi = input[j];
-					nejvetsiIndex = j;
-				}
-			}
-			output[i] = nejvetsi;
-			input[nejvetsiIndex] = int.MinValue;
+		if(prvniCislo < druheCislo){
+			// vymenit prvniCislo a druheCislo
+			prvniCislo = prvniCislo ^ druheCislo;
+			druheCislo = druheCislo ^ prvniCislo;
+			prvniCislo = prvniCislo ^ druheCislo;
+		}
+		if(druheCislo < tretiCislo){
+			// vymenit druheCislo a prvniCislo
+			druheCislo = druheCislo ^ tretiCislo;
+			tretiCislo = tretiCislo ^ druheCislo;
+			druheCislo = druheCislo ^ tretiCislo;
+		}
+		if(prvniCislo < druheCislo){
+			// vymenit prvniCislo a druheCislo
+			prvniCislo = prvniCislo ^ druheCislo;
+			druheCislo = druheCislo ^ prvniCislo;
+			prvniCislo = prvniCislo ^ druheCislo;
 		}
 
 		Console.WriteLine("Čísla v pořadí od největší po nejmenší jsou: {0}, {1}, {2}", output[0], output[1], output[2]);
