@@ -1,5 +1,6 @@
 # Úkol 5
 > ... budou vytištěna všechna tři čísla v pořadí od největšího po nejmenší ...
+
 > ... aby měl co nejméně podmínek (méně než 5) ...
 
 Tentokrát jsem implementoval bezcyklovou variantu řadicího algoritmu, který je známý pod názvem *Bubble sort*.
