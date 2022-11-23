@@ -27,9 +27,14 @@
             break;
         }
 
-		for(int i = 0; i < exp; i++){
-			sum *= zaklad;
-		}
-		Console.WriteLine(sum);
+	int i = 0;
+	while(i < exp){
+		sum *= zaklad;
+		i++;
+	}
+
+	Console.WriteLine("Výsledek je: {0}", sum);
+	Console.WriteLine("Stiskněte cokoliv pro ukončení programu...");
+	Console.ReadKey();
 	}
 }
