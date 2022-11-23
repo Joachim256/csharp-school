@@ -14,7 +14,8 @@
 			Console.Write("Zadejte třetí číslo: ");
 			tretiCislo = int.Parse(Console.ReadLine());
 		}catch(Exception e){
-			Console.WriteLine("Toto není číslo!");
+			Console.WriteLine("Toto není číslo!\nStikněte cokoliv pro ukončení programu...");
+			Console.ReadKey();
 			return;
 		}
 
