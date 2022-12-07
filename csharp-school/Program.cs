@@ -70,6 +70,7 @@
 				digits += digit.ToString();
 			}
 			// Reverse output
+			output = "";
 			for(int i = digits.Length -1; i >= 0; i--){
 				output += digits[i];
 			}
