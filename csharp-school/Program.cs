@@ -4,6 +4,7 @@
 
 		int radix1, radix2;
 		string input; int input10 = 0;
+		string output;
 
 		while (true){
 			Console.Write("Zadejte soustavu prvního čísla: ");
@@ -12,6 +13,10 @@
 			}
 			catch (Exception e){
 				Console.WriteLine("Toto není číslo!");
+				continue;
+			}
+			if(radix1 > 35){
+				Console.WriteLine("Příliš vysoký základ!");
 				continue;
 			}
 			break;
@@ -29,6 +34,10 @@
 				Console.WriteLine("Toto není číslo!");
 				continue;
 			}
+			if(radix2 > 35){
+				Console.WriteLine("Příliš vysoký základ!");
+				continue;
+			}
 			break;
 		}
 
@@ -40,7 +49,6 @@
 				int pos = input.Length - i - 1;
 				input10 += val * (int)Math.Pow(radix1, pos);
 			}
-			Console.WriteLine("In radix 10: {0}", input10);
 		}else{
 			try{
 				input10 = int.Parse(input);
@@ -51,6 +59,23 @@
 			}
 			
 		}
+		if(radix2 != 10){
+			// Convert to specified radix
+			int n = input10;
+			while(true){
+				if(n == 1){break;}
+				int digit = n % radix2;
+				n /= radix2;
+				output += digit.ToString();
+			}
+			char[] chArr = output.toCharArray();
+			Array.Reverse(chArr);
+			output = new string(chArr);
+		}else{
+			output = input10.ToString();
+		}
+
+		Console.WriteLine("{0}({1}) = {2}({3})", input, radix1, output, radix2);
 	}
 	private static int getValue(int x){
 		if(x >= 48 && x <= 57){
@@ -61,6 +86,13 @@
 			return x - 87;
 		}else{
 			throw new Exception("Číslice nemá hodnotu");
+		}
+	}
+	private static string fromValue(int x){
+		if(x < 10){
+			return x.ToString();
+		}else{
+			return ((char)(x + 97-10)).ToString();
 		}
 	}
 }
