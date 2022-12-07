@@ -1,6 +1,6 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
-		Console.WriteLine("Převod soustav");
+		Console.WriteLine("Aplikace pro převod soustav");
 
 		int radix1, radix2;
 		string input; int input10 = 0;
@@ -17,6 +17,10 @@
 			}
 			if(radix1 > 35){
 				Console.WriteLine("Příliš vysoký základ!");
+				continue;
+			}
+			if(radix1 < 2){
+				Console.WriteLine("Neplatný základ");
 				continue;
 			}
 			break;
@@ -36,6 +40,10 @@
 			}
 			if(radix2 > 35){
 				Console.WriteLine("Příliš vysoký základ!");
+				continue;
+			}
+			if(radix2 < 2){
+				Console.WriteLine("Neplatný základ");
 				continue;
 			}
 			break;
@@ -64,10 +72,10 @@
 			int n = input10;
 			string digits = "";
 			while(true){
-				if(n == 1){break;}
 				int digit = n % radix2;
 				n /= radix2;
 				digits += digit.ToString();
+				if(n == 0){break;}
 			}
 			// Reverse output
 			output = "";
