@@ -62,15 +62,17 @@
 		if(radix2 != 10){
 			// Convert to specified radix
 			int n = input10;
+			string digits = "";
 			while(true){
 				if(n == 1){break;}
 				int digit = n % radix2;
 				n /= radix2;
-				output += digit.ToString();
+				digits += digit.ToString();
 			}
-			char[] chArr = output.toCharArray();
-			Array.Reverse(chArr);
-			output = new string(chArr);
+			// Reverse output
+			for(int i = digits.Length -1; i >= 0; i--){
+				output += digits[i];
+			}
 		}else{
 			output = input10.ToString();
 		}
