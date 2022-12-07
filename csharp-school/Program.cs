@@ -38,8 +38,7 @@
 				int val = getValue(input[i]);
 				if (val >= radix1){ Console.WriteLine("Vstup neodpovídá vstupní soustavě!"); return; }
 				int pos = input.Length - i - 1;
-				Console.WriteLine("{0}", (int)Math.Pow(val, pos));
-				input10 += (int)Math.Pow(val, pos);
+				input10 += val * (int)Math.Pow(radix1, pos);
 			}
 			Console.WriteLine("In radix 10: {0}", input10);
 		}else{
