@@ -35,9 +35,13 @@
 		if (radix1 != 10){
 			// Convert to radix 10
 			for(int i = 0; i < input.Length; i++){
-				// todo
-				getValue(input[i]);
+				int val = getValue(input[i]);
+				if (val >= radix1){ Console.WriteLine("Vstup neodpovídá vstupní soustavě!"); return; }
+				int pos = input.Length - i - 1;
+				Console.WriteLine("{0}", (int)Math.Pow(val, pos));
+				input10 += (int)Math.Pow(val, pos);
 			}
+			Console.WriteLine("In radix 10: {0}", input10);
 		}else{
 			try{
 				input10 = int.Parse(input);
