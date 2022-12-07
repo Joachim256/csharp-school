@@ -11,16 +11,16 @@
 			case ":-)":
 				Console.WriteLine("Smajlík je veselý");
 				break;
-            case ":)":
-                Console.WriteLine("Smajlík je veselý");
-                break;
-            case ":-(":
+			case ":)":
+				Console.WriteLine("Smajlík je veselý");
+				break;
+			case ":-(":
 				Console.WriteLine("Smajlík je smutný");
 				break;
-            case ":(":
-                Console.WriteLine("Smajlík je smutný");
-                break;
-            case ":-*":
+			case ":(":
+				Console.WriteLine("Smajlík je smutný");
+				break;
+			case ":-*":
 				Console.WriteLine("Smajlík je zamilovaný");
 				break;
 			case ":-P":
