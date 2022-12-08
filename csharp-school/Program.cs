@@ -26,6 +26,18 @@
 			case ":-P":
 				Console.WriteLine("Smajlík má vyplazený jazyk");
 				break;
+			case ":O":
+			       Console.WriteLine("Smajlík je překvapený");
+			       break;
+			case ":/":
+			       Console.WriteLine("Smajlík je zmatený");
+			       break;
+			case ";)":
+				Console.WriteLine("Smajlík je mrkající");
+				break;
+			case ":|":
+			       Console.WriteLine("Smajlík je zaražený");
+			       break;
 			default:
 				Console.WriteLine("Neznámý smajlík");
 				break;
