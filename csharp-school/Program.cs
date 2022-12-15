@@ -74,7 +74,7 @@
 			while(true){
 				int digit = n % radix2;
 				n /= radix2;
-				digits += digit.ToString();
+				digits += fromValue(digit);
 				if(n == 0){break;}
 			}
 			// Reverse output
