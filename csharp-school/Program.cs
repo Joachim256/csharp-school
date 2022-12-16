@@ -22,7 +22,7 @@
 			// remove diacritics
 			// https://stackoverflow.com/a/2086575/11586320
 			string nodiac = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(text));
-			if(isPalindrome(nodiac){
+			if(isPalindrome(nodiac)){
 				Console.WriteLine("Zadaný text JE BEZ OHLEDU NA DIAKRITIKU palindrom");
 			}else{
 				Console.WriteLine("Zadaný text NENÍ palindrom");
