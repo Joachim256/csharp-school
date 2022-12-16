@@ -12,8 +12,8 @@
 		string text = "";
 		// remove spaces and unite to lowercase
 		for(int i = 0; i < input.Length; i++){
-			if(input[i] == " "){ continue; }
-			text += input[i].ToLower();
+			if(input[i] == 0x20){ continue; }
+			text += char.ToLower(input[i]);
 		}
 		// check palindrome
 		for(int i = 0; i < text.Length / 2; i++){
