@@ -16,12 +16,25 @@
 			text += char.ToLower(input[i]);
 		}
 		// check palindrome
-		for(int i = 0; i < text.Length / 2; i++){
-			if(text[i] != text[text.Length -i -1]){
+		if(isPalindrome(text)){
+			Console.WriteLine("Zadaný text JE palindrom");
+		}else{
+			// remove diacritics
+			// https://stackoverflow.com/a/2086575/11586320
+			string nodiac = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(text));
+			if(isPalindrome(nodiac){
+				Console.WriteLine("Zadaný text JE BEZ OHLEDU NA DIAKRITIKU palindrom");
+			}else{
 				Console.WriteLine("Zadaný text NENÍ palindrom");
-				return;
 			}
 		}
-		Console.WriteLine("Zadaný text JE palindrom");
+	}
+	private static bool isPalindrome(string text){
+		for(int i = 0; i < text.Length / 2; i++){
+			if(text[i] != text[text.Length -i -1]){
+				return false;
+			}
+		}
+		return true;
 	}
 }
