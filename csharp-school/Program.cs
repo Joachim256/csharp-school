@@ -19,6 +19,9 @@
 		if(isPalindrome(text)){
 			Console.WriteLine("Zadaný text JE palindrom");
 		}else{
+			// register encoding provider or something
+			// https://github.com/dotnet/runtime/issues/22907#issuecomment-317792540
+			System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 			// remove diacritics
 			// https://stackoverflow.com/a/2086575/11586320
 			string nodiac = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(text));
