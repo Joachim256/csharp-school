@@ -10,9 +10,11 @@
 		}
 
 		string text = "";
+		char[] ignoredCharacters = {' ', '.', ',', ';', '?', '!', '\'', '"', ':', '-', '+', '(', ')'};
+		HashSet<char> ignoredChars = new HashSet<char>(ignoredCharacters);
 		// remove spaces and unite to lowercase
 		for(int i = 0; i < input.Length; i++){
-			if(input[i] == 0x20){ continue; }
+			if(ignoredChars.Contains(input[i])){ continue; }
 			text += char.ToLower(input[i]);
 		}
 		// check palindrome
