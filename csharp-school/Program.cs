@@ -39,7 +39,7 @@
 			break;
 		}
 		
-		// key = key % 27;
+		key = key % 26;
 		if(act == 'd'){key = -key;}
 
 		// adjust string
@@ -48,14 +48,24 @@
 		input = input.ToUpper();
 
 		for(int i = 0; i < input.Length; i++){
-			char l = (char)(input[0] + key);
-			if(l > 90){
-				l = (char)(65 + l - 90 -1);
-			}else if(l < 65){
-				l = (char)(l - 65 + 90 +1);
+			char l;
+			if(input[i] < 65 || input[i] > 90){
+				l = input[i];
+			}else{
+				l = (char)(input[i] + key);
+				if(l > 90){
+					l = (char)(65 + l - 90 -1);
+				}else if(l < 65){
+					l = (char)(l - 65 + 90 +1);
+				}
 			}
 			output += l;
 		}
 
+		if(act == 'š'){
+			Console.WriteLine("Zašifrovaný text: {0}", output);
+		}else{
+			Console.WriteLine("Dešifrovaný text: {0}", output);
+		}
 	}
 }
