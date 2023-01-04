@@ -13,4 +13,20 @@
 		}
 		return u;
 	}
+	// Euklidův dělící algoritmus
+	private static int DivEuclid(int u, int w){
+		int r;
+		if(u < w){
+			// xor swap
+			u = u ^ w;
+			w = w ^ u;
+			u = u ^ w;
+		}
+		while(w != 0){
+			r = u % w;
+			u = w;
+			w = r;
+		}
+		return u;
+	}
 }
