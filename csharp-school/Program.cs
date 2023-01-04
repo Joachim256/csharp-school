@@ -3,10 +3,10 @@
 		string? choice;
 		string? input;
 		string output = "";
-		int key;
+		string? key;
 		char act;
 
-		Console.WriteLine("Caesarovův šifrátor");
+		Console.WriteLine("Polyalfabetický šifrátor");
 
 		while(true){
 			Console.Write("Chcete šifrovat nebo dešifrovat? (š/d): ");
@@ -28,31 +28,36 @@
 		input = Console.ReadLine();
 		if(input == null){Console.WriteLine("Neznámá chyba"); return;}
 
-		while(true){
-			Console.Write("Zadejte klíč: ");
-			try{
-				key = int.Parse(Console.ReadLine());
-			}catch(Exception e){
-				Console.WriteLine("Klíč musí být číslo!");
-				continue;
-			}
-			break;
-		}
-		
-		key = key % 26;
-		if(act == 'd'){key = -key;}
+		Console.Write("Zadejte klíč: ");
+		key = Console.ReadLine();
+		if(key == null){Console.WriteLine("Neznámá chyba"); return;}
 
-		// adjust string
+		// adjust strings
 		System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 		input = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(input));
 		input = input.ToUpper();
+		key = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(key));
+		key = key.ToUpper();
+
+		string tmp = "";
+		for(int i = 0; i < key.Length; i++){
+			if(key[i] == ' '){ continue; }
+			if(key[i] < 65 || key[i] > 90){
+				Console.WriteLine("Klíč obsahuje nepovolené znaky!"); return;
+			}
+			tmp += key[i];
+		}
+		key = tmp;
+
+		int sign = (act == 'š') ? 1 : -1;
 
 		for(int i = 0; i < input.Length; i++){
+			char k = (char)(key[i % key.Length] - 64);
 			char l;
 			if(input[i] < 65 || input[i] > 90){
 				l = input[i];
 			}else{
-				l = (char)(input[i] + key);
+				l = (char)(input[i] + k * sign);
 				if(l > 90){
 					l = (char)(65 + l - 90 -1);
 				}else if(l < 65){
