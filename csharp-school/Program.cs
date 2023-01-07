@@ -139,7 +139,61 @@
 		return s;
 	}
 	private static string toArabic(string str){
-		return str; // todo
+		Dictionary<char, int> digitValue = new Dictionary<char, int> {
+			{'I', 1},
+			{'V', 5},
+			{'X', 10},
+			{'L', 50},
+			{'C', 100},
+			{'D', 500},
+			{'M', 1000},
+		};
+
+		int sum = 0, sub = 0;
+		char g = str[0], highestBase = 'I', highestSubtracted = ' ';
+
+		for(int i = 0; i < str.Length; i++){
+			char c = str[i];
+
+			if(sub == 0){
+				if(digitValue[c] >= digitValue[highestBase] && i != 0){
+					Console.WriteLine("higher base! {0}", i);// error
+				}
+				sub = digitValue[c];
+			}else{
+				if(g == c){
+					sub += digitValue[c];
+				}else if(digitValue[g] > digitValue[c]){
+					if(doesInterfere(sum, sub)){
+						Console.WriteLine("digit interference! {0}", i);// error
+					}
+					sum += sub;
+					sub = digitValue[c];
+				}else if(digitValue[g] < digitValue[c]){
+					if(highestSubtracted != ' ' && digitValue[c] >= digitValue[highestSubtracted]){
+						Console.WriteLine("higher subtracted! {0}", i);// error
+					}
+					if(doesInterfere(sum, digitValue[c] - sub)){
+						Console.WriteLine("digit interference! {0}", i);// error
+					}
+					
+					sum += digitValue[c] - sub;
+					sub = 0;
+					highestSubtracted = c;
+				}
+			}
+			if(digitValue[c] > digitValue[highestBase]){
+				highestBase = c;
+			}
+			
+			g = c;
+		}
+
+		if(doesInterfere(sum, sub)){
+			Console.WriteLine("digit interference! end");// error
+		}
+		sum += sub;
+		return sum.ToString();
 	}
 
 	private static string repeat(string str, int count){
@@ -148,5 +202,16 @@
 			x += str;
 		}
 		return x;
+	}
+	private static bool doesInterfere(int sum, int a){
+		for(int i = 0; i < Math.Log10(a)+1; i++){
+			int x = (a / (int)Math.Pow(10, i) - ((a / (int)Math.Pow(10, i+1)*10)));
+			int y = (sum / (int)Math.Pow(10, i) - ((sum / (int)Math.Pow(10, i+1)*10)));
+
+			if(x > 0 && y > 0){
+				return true;
+			}
+		}
+		return false;
 	}
 }
