@@ -7,12 +7,12 @@
 		input = Console.ReadLine();
 
 		char[] romanDigits = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-		HashSet<char> validRomans = new HashSet<char>(romanDigits);
+		HashSet<char> validRomans = new HashSet<char>(romanDigits);
 
-		bool isArabic, isRoman;
+		bool isArabic = false, isRoman = false;
 
 		for(int i = 0; i < input.Length; i++){
-			if(input >= 48 && input <= 57){
+			if(input[i] >= 48 && input[i] <= 57){
 				isArabic = true;
 			}else if(validRomans.Contains(input[i])){
 				isRoman = true;
@@ -32,8 +32,8 @@
 	}
 
 	private static string toRoman(string str){
-		string out = "";
-		int num;
+		string s = "";
+		int num = 0;
 
 		try{
 			num = int.Parse(str);
@@ -42,110 +42,110 @@
 			System.Environment.Exit(0);
 		}
 		int thousands = num / 1000;
-		out += repeat("M", thousands);
+		s += repeat("M", thousands);
 		num -= thousands * 1000;
 		int hundreds = num / 100;
 		switch(hundreds){
 			case 1:
-				out += "C";
+				s += "C";
 				break;
 			case 2:
-				out += "CC";
+				s += "CC";
 				break;
 			case 3:
-				out += "CCC";
+				s += "CCC";
 				break;
 			case 4:
-				out += "CD";
+				s += "CD";
 				break;
 			case 5:
-				out += "D";
+				s += "D";
 				break;
 			case 6:
-				out += "DC";
+				s += "DC";
 				break;
 			case 7:
-				out += "DCC";
+				s += "DCC";
 				break;
 			case 8:
-				out += "DCCC";
+				s += "DCCC";
 				break;
 			case 9:
-				out += "CM";
+				s += "CM";
 				break;
 		}
 		num -= hundreds * 100;
 		int tens = num / 10;
 		switch(tens){
 			case 1:
-				out += "X";
+				s += "X";
 				break;
 			case 2:
-				out += "XX";
+				s += "XX";
 				break;
 			case 3:
-				out += "XXX";
+				s += "XXX";
 				break;
 			case 4:
-				out += "XL";
+				s += "XL";
 				break;
 			case 5:
-				out += "L";
+				s += "L";
 				break;
 			case 6:
-				out += "LX";
+				s += "LX";
 				break;
 			case 7:
-				out += "LXX";
+				s += "LXX";
 				break;
 			case 8:
-				out += "LXXX";
+				s += "LXXX";
 				break;
 			case 9:
-				out += "XC";
+				s += "XC";
 				break;
 		}
 		num -= tens * 10;
 		switch(num){
 			case 1:
-				out += "I";
+				s += "I";
 				break;
 			case 2:
-				out += "II";
+				s += "II";
 				break;
 			case 3:
-				out += "III";
+				s += "III";
 				break;
 			case 4:
-				out += "IV";
+				s += "IV";
 				break;
 			case 5:
-				out += "V";
+				s += "V";
 				break;
 			case 6:
-				out += "VI";
+				s += "VI";
 				break;
 			case 7:
-				out += "VII";
+				s += "VII";
 				break;
 			case 8:
-				out += "VIII";
+				s += "VIII";
 				break;
 			case 9:
-				out += "IX";
+				s += "IX";
 				break;
 		}
-		return out;
+		return s;
 	}
 	private static string toArabic(string str){
-
+		return str; // todo
 	}
 
-	private static string repeat(string str, int count){
-		string x = "";
-		for(var i = 0; i < count; i++){
-			x += str;
+	private static string repeat(string str, int count){
+		string x = "";
+		for(var i = 0; i < count; i++){
+			x += str;
 		}
-		return x;
+		return x;
 	}
 }
