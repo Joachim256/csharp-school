@@ -6,6 +6,7 @@
 		Console.Write(": ");
 		input = Console.ReadLine();
 
+		if(input.ToLower() == "lidl"){ Console.WriteLine("Správná volba!"); return; }
 		char[] romanDigits = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 		HashSet<char> validRomans = new HashSet<char>(romanDigits);
 
