@@ -11,16 +11,5 @@ namespace WinFormsApp1
         {
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (Form1.ActiveForm.BackColor == Color.Coral) {
-                Form1.ActiveForm.BackColor = Color.Gray;
-            }
-            else{
-                Form1.ActiveForm.BackColor = Color.OldLace;
-            }
-            
-        }
     }
 }
