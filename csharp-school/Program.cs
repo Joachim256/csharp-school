@@ -5,6 +5,7 @@
 		Console.WriteLine("Převaděč Římské číslice <-> Arabská číslice");
 		Console.Write(": ");
 		input = Console.ReadLine();
+		if(input == null){Console.WriteLine("Neznámá chyba"); return;}
 
 		if(input.ToLower() == "lidl"){ Console.WriteLine("Správná volba!"); return; }
 		char[] romanDigits = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
@@ -17,6 +18,8 @@
 				isArabic = true;
 			}else if(validRomans.Contains(input[i])){
 				isRoman = true;
+			}else{
+				isArabic = false; isRoman = false;
 			}
 			if(!(isArabic ^ isRoman)){
 				Console.WriteLine("Neplatný vstup!");
@@ -138,7 +141,7 @@
 		}
 		return s;
 	}
-	private static string toArabic(string str){
+	private static string? toArabic(string str){
 		Dictionary<char, int> digitValue = new Dictionary<char, int> {
 			{' ', 0},
 			{'I', 1},
@@ -150,7 +153,6 @@
 			{'M', 1000},
 			{'.', 1001}
 		};
-		char[] gradeWBase = {'.', '.', '.', '.'};
 		int[] gradeWTotal = {0, 0, 0, 0};
 
 		int sum = 0, sub = 0;
@@ -162,7 +164,7 @@
 
 			if(sub == 0){
 				if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
-					Console.WriteLine("higher base! {0}", i);// error
+					Console.WriteLine("higher base! {0}", i);return null;// error
 				}
 				sub = digitValue[c];
 				sublength++;
@@ -171,35 +173,35 @@
 					sub += digitValue[c];
 					sublength++;
 				}else if(digitValue[g] > digitValue[c]){
-					int[] grd = grades(sub);
+					int[] grd = grades(sub / sublength);
 					for(int j = 0; j < 4; j++){
-						gradeWTotal[j] += grd[j];
+						gradeWTotal[j] += grd[j]*sublength;
 						if(gradeWTotal[j] >= 10){
-							Console.WriteLine("going over digit! {0}", i);// error
+							Console.WriteLine("going over digit! {0}", i-1);return null;// error
 						}
 					}
 					sum += sub;
 					sub = digitValue[c];
 					sublength = 1;
 					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
-						Console.WriteLine("higher base! {0}", i);// error
+						Console.WriteLine("higher base! {0}", i);return null;// error
 					}
 					highestBase = g;
 				}else if(digitValue[g] < digitValue[c]){
 					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
-						Console.WriteLine("higher base! {0}", i);// error
+						Console.WriteLine("higher base! {0}", i);return null;// error
 					}
 					highestBase = c;
 					
 					if(digitValue[c] - sub <= 0){
-						Console.WriteLine("subtracting too much! {0}", i);// error
+						Console.WriteLine("subtracting too much! {0}", i);return null;// error
 					}
 
-					int[] grd = grades(digitValue[c] - sub);
+					int[] grd = grades((digitValue[c] - sub) / sublength);
 					for(int j = 0; j < 4; j++){
-						gradeWTotal[j] += grd[j];
+						gradeWTotal[j] += grd[j]*sublength;
 						if(gradeWTotal[j] >= 10){
-							Console.WriteLine("going over digit! {0}", i);// error
+							Console.WriteLine("going over digit! {0}", i);return null;// error
 						}
 					}
 					
@@ -214,11 +216,11 @@
 		}
 
 		if(sub > 0){
-			int[] grd1 = grades(sub);
+			int[] grd1 = grades(sub / sublength);
 			for(int j = 0; j < 4; j++){
-				gradeWTotal[j] += grd1[j];
+				gradeWTotal[j] += grd1[j]*sublength;
 				if(gradeWTotal[j] >= 10){
-					Console.WriteLine("going over digit! {0}", "end");// error
+					Console.WriteLine("going over digit! {0}", "end");return null;// error
 				}
 			}
 		}
