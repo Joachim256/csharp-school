@@ -173,7 +173,10 @@
 				}else if(digitValue[g] > digitValue[c]){
 					int[] grd = grades(sub);
 					for(int j = 0; j < 4; j++){
-						// here
+						gradeWTotal[j] += grd[j];
+						if(gradeWTotal > 10){
+							Console.WriteLine("going over digit! {0}", i);// error
+						}
 					}
 					sum += sub;
 					sub = digitValue[c];
@@ -188,6 +191,17 @@
 					}
 					highestBase = c;
 					
+					if(digitValue[c] - sub <= 0){
+						Console.WriteLine("subtracting too much! {0}", i);// error
+					}
+
+					int[] grd = grades(sub);
+					for(int j = 0; j < 4; j++){
+						gradeWTotal[j] += grd[j];
+						if(gradeWTotal > 10){
+							Console.WriteLine("going over digit! {0}", i);// error
+						}
+					}
 					
 					sum += digitValue[c] - sub;
 					sub = 0;
@@ -199,6 +213,13 @@
 			g = c;
 		}
 
+		int[] grd = grades(sub);
+		for(int j = 0; j < 4; j++){
+			gradeWTotal[j] += grd[j];
+			if(gradeWTotal > 10){
+				Console.WriteLine("going over digit! {0}", i);// error
+			}
+		}
 		sum += sub;
 		return sum.ToString();
 	}
