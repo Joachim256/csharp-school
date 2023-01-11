@@ -140,6 +140,7 @@
 	}
 	private static string toArabic(string str){
 		Dictionary<char, int> digitValue = new Dictionary<char, int> {
+			{' ', 0},
 			{'I', 1},
 			{'V', 5},
 			{'X', 10},
@@ -147,53 +148,69 @@
 			{'C', 100},
 			{'D', 500},
 			{'M', 1000},
+			{'.', 1001}
 		};
+		char[] gradeWBase = {'.', '.', '.', '.'};
+		int[] gradeWTotal = {0, 0, 0, 0};
 
 		int sum = 0, sub = 0;
-		char g = str[0], highestBase = 'I', highestSubtracted = ' ';
+		int sublength = 0;
+		char g = str[0], highestBase = ' ';
 
 		for(int i = 0; i < str.Length; i++){
 			char c = str[i];
 
 			if(sub == 0){
-				if(digitValue[c] >= digitValue[highestBase] && i != 0){
+				if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
 					Console.WriteLine("higher base! {0}", i);// error
 				}
 				sub = digitValue[c];
+				sublength++;
 			}else{
 				if(g == c){
 					sub += digitValue[c];
+					sublength++;
 				}else if(digitValue[g] > digitValue[c]){
-					if(doesInterfere(sum, sub)){
-						Console.WriteLine("digit interference! {0}", i);// error
+					int[] grd = grades(sub);
+					for(int j = 0; j < 4; j++){
+						// here
 					}
 					sum += sub;
 					sub = digitValue[c];
+					sublength = 1;
+					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
+						Console.WriteLine("higher base! {0}", i);// error
+					}
+					highestBase = g;
 				}else if(digitValue[g] < digitValue[c]){
-					if(highestSubtracted != ' ' && digitValue[c] >= digitValue[highestSubtracted]){
-						Console.WriteLine("higher subtracted! {0}", i);// error
+					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
+						Console.WriteLine("higher base! {0}", i);// error
 					}
-					if(doesInterfere(sum, digitValue[c] - sub)){
-						Console.WriteLine("digit interference! {0}", i);// error
-					}
+					highestBase = c;
+					
 					
 					sum += digitValue[c] - sub;
 					sub = 0;
-					highestSubtracted = c;
+					sublength = 0;
 				}
 			}
-			if(digitValue[c] > digitValue[highestBase]){
-				highestBase = c;
-			}
+			// sublength > 1 warn
 			
 			g = c;
 		}
 
-		if(doesInterfere(sum, sub)){
-			Console.WriteLine("digit interference! end");// error
-		}
 		sum += sub;
 		return sum.ToString();
+	}
+	private static int[] grades(int num){
+		int[] arr = {0, 0, 0, 0};
+		int tmp;
+		for(int i = 3; i >= 0; i--){
+			tmp = num / (int)Math.Pow(10, i);
+			arr[i] = tmp;
+			num -= tmp * (int)Math.Pow(10, i);
+		}
+		return arr;
 	}
 
 	private static string repeat(string str, int count){
@@ -202,16 +219,5 @@
 			x += str;
 		}
 		return x;
-	}
-	private static bool doesInterfere(int sum, int a){
-		for(int i = 0; i < Math.Log10(a)+1; i++){
-			int x = (a / (int)Math.Pow(10, i) - ((a / (int)Math.Pow(10, i+1)*10)));
-			int y = (sum / (int)Math.Pow(10, i) - ((sum / (int)Math.Pow(10, i+1)*10)));
-
-			if(x > 0 && y > 0){
-				return true;
-			}
-		}
-		return false;
 	}
 }
