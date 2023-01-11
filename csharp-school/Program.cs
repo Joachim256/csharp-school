@@ -174,7 +174,7 @@
 					int[] grd = grades(sub);
 					for(int j = 0; j < 4; j++){
 						gradeWTotal[j] += grd[j];
-						if(gradeWTotal > 10){
+						if(gradeWTotal[j] >= 10){
 							Console.WriteLine("going over digit! {0}", i);// error
 						}
 					}
@@ -195,10 +195,10 @@
 						Console.WriteLine("subtracting too much! {0}", i);// error
 					}
 
-					int[] grd = grades(sub);
+					int[] grd = grades(digitValue[c] - sub);
 					for(int j = 0; j < 4; j++){
 						gradeWTotal[j] += grd[j];
-						if(gradeWTotal > 10){
+						if(gradeWTotal[j] >= 10){
 							Console.WriteLine("going over digit! {0}", i);// error
 						}
 					}
@@ -213,11 +213,13 @@
 			g = c;
 		}
 
-		int[] grd = grades(sub);
-		for(int j = 0; j < 4; j++){
-			gradeWTotal[j] += grd[j];
-			if(gradeWTotal > 10){
-				Console.WriteLine("going over digit! {0}", i);// error
+		if(sub > 0){
+			int[] grd1 = grades(sub);
+			for(int j = 0; j < 4; j++){
+				gradeWTotal[j] += grd1[j];
+				if(gradeWTotal[j] >= 10){
+					Console.WriteLine("going over digit! {0}", "end");// error
+				}
 			}
 		}
 		sum += sub;
