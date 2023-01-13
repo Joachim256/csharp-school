@@ -164,7 +164,7 @@
 
 			if(sub == 0){
 				if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
-					Console.WriteLine("higher base! {0}", i);return null;// error
+					error(str, "Higher digit!", '^', i, 0); return null;
 				}
 				sub = digitValue[c];
 				sublength++;
@@ -177,31 +177,31 @@
 					for(int j = 0; j < 4; j++){
 						gradeWTotal[j] += grd[j]*sublength;
 						if(gradeWTotal[j] >= 10){
-							Console.WriteLine("going over digit! {0}", i-1);return null;// error
+							error(str, "Going over digit!", '^', i-1, 0); return null;
 						}
 					}
 					sum += sub;
 					sub = digitValue[c];
 					sublength = 1;
 					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
-						Console.WriteLine("higher base! {0}", i);return null;// error
+						error(str, "Higher digit!", '^', i, 0); return null;
 					}
 					highestBase = g;
 				}else if(digitValue[g] < digitValue[c]){
 					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
-						Console.WriteLine("higher base! {0}", i);return null;// error
+						error(str, "Higher digit!", '^', i, 0); return null;
 					}
 					highestBase = c;
 					
 					if(digitValue[c] - sub <= 0){
-						Console.WriteLine("subtracting too much! {0}", i);return null;// error
+						error(str, "Subtracting too much!", '/', i, sublength); return null;
 					}
 
 					int[] grd = grades((digitValue[c] - sub) / sublength);
 					for(int j = 0; j < 4; j++){
 						gradeWTotal[j] += grd[j]*sublength;
 						if(gradeWTotal[j] >= 10){
-							Console.WriteLine("going over digit! {0}", i);return null;// error
+							error(str, "Going over digit!", '^', i, 0); return null;
 						}
 					}
 					
@@ -220,12 +220,36 @@
 			for(int j = 0; j < 4; j++){
 				gradeWTotal[j] += grd1[j]*sublength;
 				if(gradeWTotal[j] >= 10){
-					Console.WriteLine("going over digit! {0}", "end");return null;// error
+					error(str, "Going over digit!", '^', str.Length -1, 0); return null;
 				}
 			}
 		}
 		sum += sub;
 		return sum.ToString();
+	}
+	private static void error(string n, string text, char type, int pos, int len){
+		msg('e', text, type, pos, len);
+	}
+	private static void warn(string n, string text, char type, int pos, int len){
+		msg('w', text, type, pos, len);
+	}
+	private static void msg(char t, string n, string text, char type, int pos, int len){}
+		// print number
+		Console.WriteLine("\t{0}", n);
+		// begin color
+		if(t == 'e'){
+			Console.Write("\x1b[31m");
+		}else if(t == 'w'){
+			Console.Write("\x1b[33m");
+		}
+		// print arrows
+		if(type == '^'){
+			Console.WriteLine("\t{0}^", repeat(" ", pos));
+		}else if(type == "/"){
+			Console.WriteLine("\t{0}{1}^", repeat(" ", pos-len));
+		}
+		// print text
+		Console.WriteLine("\t{0}\x1b[0m", text);
 	}
 	private static int[] grades(int num){
 		int[] arr = {0, 0, 0, 0};
