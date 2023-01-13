@@ -185,6 +185,10 @@
 							error(str, "Going over digit!", '^', i-1, 0); return null;
 						}
 					}
+					if(sublength > 4){
+						error(str, "Too many!", '-', i-sublength, sublength); return null;
+					}
+					
 					sum += sub;
 					sub = digitValue[c];
 					sublength = 1;
@@ -222,13 +226,15 @@
 							error(str, "Going over digit!", '^', i, 0); return null;
 						}
 					}
+					if(sublength > 2){
+						error(str, "Too many!", '-', i-sublength, sublength); return null;
+					}
 					
 					sum += digitValue[c] - sub;
 					sub = 0;
 					sublength = 0;
 				}
 			}
-			// sublength > 1 warn
 			
 			g = c;
 		}
@@ -242,6 +248,10 @@
 				}
 			}
 		}
+		if(sublength > 4){
+			error(str, "Too many!", '-', str.Length-sublength, sublength); return null;
+		}
+
 		sum += sub;
 		return sum.ToString();
 	}
@@ -266,6 +276,8 @@
 			Console.WriteLine("\t{0}^", repeat(" ", pos));
 		}else if(type == '/'){
 			Console.WriteLine("\t{0}{1}^", repeat(" ", pos-len), repeat("-", len));
+		}else if(type == '-'){
+			Console.WriteLine("\t{0}{1}", repeat(" ", pos), repeat("-", len));
 		}
 		// print text
 		Console.WriteLine("\t{0}\x1b[0m", text);
