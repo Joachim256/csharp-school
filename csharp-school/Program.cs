@@ -27,10 +27,14 @@
 			}
 		}
 
+		string? converted = "";
 		if(isArabic){
-			Console.WriteLine("Arabsky: {0}\nŘímsky: {1}", input, toRoman(input));
+			converted = toRoman(input);
+			Console.WriteLine("---\n Arabsky: {0}\nŘímsky: {1}", input, converted);
 		}else if(isRoman){
-			Console.WriteLine("Římsky: {0}\nArabsky: {1}", input, toArabic(input));
+			converted = toArabic(input);
+			if(converted == null){return;}
+			Console.WriteLine("---\nŘímsky: {0}\nArabsky: {1}", input, converted);
 		}
 
 	}
@@ -234,6 +238,7 @@
 		msg('w', n, text, type, pos, len);
 	}
 	private static void msg(char t, string n, string text, char type, int pos, int len){
+		Console.WriteLine("---");
 		// print number
 		Console.WriteLine("\t{0}", n);
 		// begin color
