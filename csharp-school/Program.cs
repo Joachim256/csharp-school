@@ -161,13 +161,14 @@
 
 		int sum = 0, sub = 0;
 		int sublength = 0;
-		char g = str[0], highestBase = ' ';
+		char g = str[0], highestBase = '.';
+		byte highestBaseUseStyle = 0;
 
 		for(int i = 0; i < str.Length; i++){
 			char c = str[i];
 
 			if(sub == 0){
-				if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
+				if(digitValue[c] >= digitValue[highestBase] && highestBase != '.'){
 					error(str, "Higher digit!", '^', i, 0); return null;
 				}
 				sub = digitValue[c];
@@ -187,15 +188,28 @@
 					sum += sub;
 					sub = digitValue[c];
 					sublength = 1;
-					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
+
+					if(highestBaseUseStyle < 2){
+					}else if(digitValue[c] >= digitValue[highestBase] && highestBase != '.'){
 						error(str, "Higher digit!", '^', i, 0); return null;
 					}
-					highestBase = g;
+					if(digitValue[c] < digitValue[highestBase]){
+						highestBase = g;
+						highestBaseUseStyle = 0;
+					}else{
+						highestBaseUseStyle++;
+					}
 				}else if(digitValue[g] < digitValue[c]){
-					if(digitValue[c] >= digitValue[highestBase] && highestBase != ' '){
+					if(highestBaseUseStyle < 2){
+					}else if(digitValue[c] >= digitValue[highestBase] && highestBase != '.'){
 						error(str, "Higher digit!", '^', i, 0); return null;
 					}
-					highestBase = c;
+					if(digitValue[c] < digitValue[highestBase]){
+						highestBase = c;
+						highestBaseUseStyle = 0;
+					}else{
+						highestBaseUseStyle = 2;
+					}
 					
 					if(digitValue[c] - sub <= 0){
 						error(str, "Subtracting too much!", '/', i, sublength); return null;
