@@ -228,12 +228,12 @@
 		return sum.ToString();
 	}
 	private static void error(string n, string text, char type, int pos, int len){
-		msg('e', text, type, pos, len);
+		msg('e', n, text, type, pos, len);
 	}
 	private static void warn(string n, string text, char type, int pos, int len){
-		msg('w', text, type, pos, len);
+		msg('w', n, text, type, pos, len);
 	}
-	private static void msg(char t, string n, string text, char type, int pos, int len){}
+	private static void msg(char t, string n, string text, char type, int pos, int len){
 		// print number
 		Console.WriteLine("\t{0}", n);
 		// begin color
@@ -245,8 +245,8 @@
 		// print arrows
 		if(type == '^'){
 			Console.WriteLine("\t{0}^", repeat(" ", pos));
-		}else if(type == "/"){
-			Console.WriteLine("\t{0}{1}^", repeat(" ", pos-len));
+		}else if(type == '/'){
+			Console.WriteLine("\t{0}{1}^", repeat(" ", pos-len), repeat("-", len));
 		}
 		// print text
 		Console.WriteLine("\t{0}\x1b[0m", text);
