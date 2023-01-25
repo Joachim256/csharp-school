@@ -51,6 +51,7 @@
             this.disableMinimize.TabIndex = 0;
             this.disableMinimize.Text = "Zakázat minimalizační tlačítko";
             this.disableMinimize.UseVisualStyleBackColor = true;
+            this.disableMinimize.Click += new System.EventHandler(this.disableMinimize_Click);
             // 
             // enableMinimize
             // 
@@ -60,6 +61,7 @@
             this.enableMinimize.TabIndex = 1;
             this.enableMinimize.Text = "Povolit minimalizační tlačítko";
             this.enableMinimize.UseVisualStyleBackColor = true;
+            this.enableMinimize.Click += new System.EventHandler(this.enableMinimize_Click);
             // 
             // blueForm
             // 
@@ -69,6 +71,7 @@
             this.blueForm.TabIndex = 2;
             this.blueForm.Text = "Modrý formulář";
             this.blueForm.UseVisualStyleBackColor = true;
+            this.blueForm.Click += new System.EventHandler(this.blueForm_Click);
             // 
             // whiteForm
             // 
@@ -78,6 +81,7 @@
             this.whiteForm.TabIndex = 3;
             this.whiteForm.Text = "Bílý formulář a žlutá políčka";
             this.whiteForm.UseVisualStyleBackColor = true;
+            this.whiteForm.Click += new System.EventHandler(this.whiteForm_Click);
             // 
             // displayField
             // 
@@ -87,6 +91,7 @@
             this.displayField.TabIndex = 4;
             this.displayField.Text = "Zobrazit text z políčka 1";
             this.displayField.UseVisualStyleBackColor = true;
+            this.displayField.Click += new System.EventHandler(this.displayField_Click);
             // 
             // grayForm
             // 
@@ -96,6 +101,7 @@
             this.grayForm.TabIndex = 5;
             this.grayForm.Text = "Šedý formulář";
             this.grayForm.UseVisualStyleBackColor = true;
+            this.grayForm.Click += new System.EventHandler(this.grayForm_Click);
             // 
             // clearAll
             // 
@@ -105,6 +111,7 @@
             this.clearAll.TabIndex = 6;
             this.clearAll.Text = "Vymazat všechna políčka a obarvit na bílo";
             this.clearAll.UseVisualStyleBackColor = true;
+            this.clearAll.Click += new System.EventHandler(this.clearAll_Click);
             // 
             // disableAll
             // 
@@ -114,6 +121,7 @@
             this.disableAll.TabIndex = 7;
             this.disableAll.Text = "Zakázat všechna políčka";
             this.disableAll.UseVisualStyleBackColor = true;
+            this.disableAll.Click += new System.EventHandler(this.disableAll_Click);
             // 
             // enableAll
             // 
@@ -123,6 +131,7 @@
             this.enableAll.TabIndex = 8;
             this.enableAll.Text = "Povolit všechna políčka";
             this.enableAll.UseVisualStyleBackColor = true;
+            this.enableAll.Click += new System.EventHandler(this.enableAll_Click);
             // 
             // textBox1
             // 
@@ -153,6 +162,7 @@
             this.copyField.TabIndex = 12;
             this.copyField.Text = "Zkopírovat text políčka 1 do ostatních";
             this.copyField.UseVisualStyleBackColor = true;
+            this.copyField.Click += new System.EventHandler(this.copyField_Click);
             // 
             // Form1
             // 
@@ -173,7 +183,7 @@
             this.Controls.Add(this.enableMinimize);
             this.Controls.Add(this.disableMinimize);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Pokusy s komponentami";
             this.ResumeLayout(false);
             this.PerformLayout();
 
