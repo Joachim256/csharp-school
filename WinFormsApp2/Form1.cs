@@ -9,6 +9,7 @@ namespace WinFormsApp2
 
         private Random rng = new Random();
         private int[] directions = {1, 1};
+        private bool changeDir = false;
         private void button_Click(object sender, EventArgs e)
         {
             timer1.Enabled = ! timer1.Enabled;
@@ -25,7 +26,8 @@ namespace WinFormsApp2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(rng.Next(0, 5) == 0){
+            if(changeDir || rng.Next(0, 5) == 0){
+                changeDir = false;
                 // change direction
                 for(int i = 0; i < 2; i++){
                     directions[i] = (rng.Next(0, 2) == 0) ? -1 : 1;
@@ -36,9 +38,9 @@ namespace WinFormsApp2
             int y = fly.Location.Y;
             x += directions[0] * jmpSize;
             y += directions[1] * jmpSize;
+            if (x < 0) { x = 0; changeDir = true; } else if (x > panel.ClientSize.Width - fly.Width) { x = panel.ClientSize.Width - fly.Width; changeDir = true; }
+            if (y < 0) { y = 0; changeDir = true; } else if (y > panel.ClientSize.Height - fly.Height) { y = panel.ClientSize.Height - fly.Height; changeDir = true; }
             fly.Location = new Point(x, y);
-
-            //panel.ClientRectangle.Location.X;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
