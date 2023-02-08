@@ -15,18 +15,21 @@ namespace WinFormsApp2
             timer1.Enabled = ! timer1.Enabled;
         }
         private int jmpSize = 1;
+        private int jmpSpeed = 40;
         private void jumpSize_ValueChanged(object sender, EventArgs e)
         {
             jmpSize = (int)jumpSize.Value;
         }
         private void jumpSpeed_ValueChanged(object sender, EventArgs e)
         {
-            timer1.Interval = (int)(500 - jumpSpeed.Value);
+            if(jumpSpeed.Value >= 50) { return; }
+            jmpSpeed = (int)jumpSpeed.Value;
+            timer1.Interval = (int)(50 - jmpSpeed);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(changeDir || rng.Next(0, 5) == 0){
+            if(changeDir || rng.Next(0, 2 + jmpSpeed) == 0){
                 changeDir = false;
                 // change direction
                 for(int i = 0; i < 2; i++){

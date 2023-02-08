@@ -94,7 +94,7 @@
             // 
             this.jumpSpeed.Location = new System.Drawing.Point(244, 7);
             this.jumpSpeed.Maximum = new decimal(new int[] {
-            500,
+            50,
             0,
             0,
             0});
@@ -107,7 +107,7 @@
             this.jumpSpeed.Size = new System.Drawing.Size(50, 23);
             this.jumpSpeed.TabIndex = 3;
             this.jumpSpeed.Value = new decimal(new int[] {
-            250,
+            40,
             0,
             0,
             0});
@@ -115,16 +115,17 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button
             // 
             this.button.Dock = System.Windows.Forms.DockStyle.Right;
             this.button.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button.Location = new System.Drawing.Point(909, 5);
+            this.button.Location = new System.Drawing.Point(656, 5);
             this.button.Margin = new System.Windows.Forms.Padding(10);
             this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(88, 34);
+            this.button.Size = new System.Drawing.Size(88, 32);
             this.button.TabIndex = 4;
             this.button.Text = "Start / Stop";
             this.button.UseVisualStyleBackColor = true;
@@ -146,7 +147,7 @@
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1002, 411);
+            this.panel.Size = new System.Drawing.Size(749, 394);
             this.panel.TabIndex = 5;
             // 
             // splitContainer1
@@ -169,15 +170,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel);
-            this.splitContainer1.Size = new System.Drawing.Size(1002, 454);
-            this.splitContainer1.SplitterDistance = 39;
+            this.splitContainer1.Size = new System.Drawing.Size(749, 435);
+            this.splitContainer1.SplitterDistance = 37;
             this.splitContainer1.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 454);
+            this.ClientSize = new System.Drawing.Size(749, 435);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
