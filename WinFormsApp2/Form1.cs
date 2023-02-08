@@ -12,12 +12,30 @@ namespace WinFormsApp2
 
         private int turnCount = 0;
         private int pointCount = 0;
+        private Random rng = new Random();
+        private void generateNumbers()
+        {
+            int[] numbers = {-1,-1,-1,-1};
+            for (int i = 0; i < 4; i++)
+            {
+                int n = rng.Next(0, 10);
+                if(Array.IndexOf(numbers, n) != -1) { i--; continue; }
+                numbers[i] = n;
+            }
+            // fill in the numbers
+            compN1.Text = numbers[0].ToString();
+            compN2.Text = numbers[1].ToString();
+            compN3.Text = numbers[2].ToString();
+            compN4.Text = numbers[3].ToString();
+        }
         private void newTurnBtn_Click(object sender, EventArgs e)
         {
+            // parse inputs
             TextBox[] uinputs = { userN1, userN2, userN3, userN4 };
             int[] numbers = {0,0,0,0};
             for(int i = 0; i < 4; i++)
             {
+                // check for empty textboxes
                 if (uinputs[i].Text.Length == 0)
                 {
                     MessageBox.Show("Hráè nezadal všechna èísla!", "", MessageBoxButtons.OK);
@@ -25,7 +43,14 @@ namespace WinFormsApp2
                 }
                 numbers[i] = int.Parse(uinputs[i].Text);
             }
+            // validate numbers
             if(!validateContextInputs(numbers)) { return; }
+            // generate comp numbers
+            generateNumbers();
+            // bump turn count
+            turnCount++;
+            labelTurnCount.Text = "poèet tahù: " + turnCount.ToString();
+            // todo: count matches, add points & display log
         }
         private bool validateContextInputs(int[] numbers)
         {
