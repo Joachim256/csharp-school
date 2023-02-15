@@ -13,26 +13,53 @@ namespace WinFormsApp2
         private int turnCount = 0;
         private int pointCount = 0;
         private Random rng = new Random();
+        private int[] userNumbers = {0,0,0,0};
+        private int[] compNumbers = {0,0,0,0};
+        private Dictionary<int, bool> userNumberDict = new Dictionary<int, bool>() { { 0, false }, { 1, false }, { 2, false }, { 3, false }, { 4, false }, { 5, false }, { 6, false }, { 7, false }, { 8, false }, { 9, false } };
+        private Dictionary<int, bool> compNumberDict = new Dictionary<int, bool>() { { 0, false }, { 1, false }, { 2, false }, { 3, false }, { 4, false }, { 5, false }, { 6, false }, { 7, false }, { 8, false }, { 9, false } };
+        private void resetVars()
+        {
+            for(int i = 0; i < 10; i++) { userNumberDict[i] = false; compNumberDict[i] = false; }
+        }
         private void generateNumbers()
         {
-            int[] numbers = {-1,-1,-1,-1};
             for (int i = 0; i < 4; i++)
             {
                 int n = rng.Next(0, 10);
-                if(Array.IndexOf(numbers, n) != -1) { i--; continue; }
-                numbers[i] = n;
+                if(Array.IndexOf(compNumbers, n) != -1) { i--; continue; }
+                compNumbers[i] = n;
+                compNumberDict[n] = true;
             }
             // fill in the numbers
-            compN1.Text = numbers[0].ToString();
-            compN2.Text = numbers[1].ToString();
-            compN3.Text = numbers[2].ToString();
-            compN4.Text = numbers[3].ToString();
+            compN1.Text = compNumbers[0].ToString();
+            compN2.Text = compNumbers[1].ToString();
+            compN3.Text = compNumbers[2].ToString();
+            compN4.Text = compNumbers[3].ToString();
+        }
+        private void evaluateTurn()
+        {
+            // count matches
+            int matches = 0;
+            for(int i = 0; i < 10; i++)
+            {
+                if (userNumberDict[i] && compNumberDict[i])
+                {
+                    matches++;
+                }
+            }
+            // add points
+            pointCount += 10 * matches;
+            labelPointCount.Text = "poèet bodù: " + pointCount;
+            // log
+            var langDict = new Dictionary<int, string>() { {0, "èísel"}, {1, "èíslo"}, {2, "èísla"}, {3, "èísla"}, {4, "èísla"} };
+            logBox.Text += String.Format("\n{0}. tah\nhráèova èísla: {1}\nlosovaná èísla: {2}\nshoda – {3} {4} ({5} bodù)\n--------------------", turnCount, String.Join(", ", userNumbers), String.Join(", ", compNumbers), matches, langDict[matches], matches * 10);
         }
         private void newTurnBtn_Click(object sender, EventArgs e)
         {
+            // reset vars
+            resetVars();
             // parse inputs
             TextBox[] uinputs = { userN1, userN2, userN3, userN4 };
-            int[] numbers = {0,0,0,0};
             for(int i = 0; i < 4; i++)
             {
                 // check for empty textboxes
@@ -41,30 +68,30 @@ namespace WinFormsApp2
                     MessageBox.Show("Hráè nezadal všechna èísla!", "", MessageBoxButtons.OK);
                     return;
                 }
-                numbers[i] = int.Parse(uinputs[i].Text);
+                userNumbers[i] = int.Parse(uinputs[i].Text);
             }
             // validate numbers
-            if(!validateContextInputs(numbers)) { return; }
+            if (!validateContextInputs()) { return; }
             // generate comp numbers
             generateNumbers();
             // bump turn count
             turnCount++;
             labelTurnCount.Text = "poèet tahù: " + turnCount.ToString();
-            // todo: count matches, add points & display log
+            // evaluate and log
+            evaluateTurn();
         }
-        private bool validateContextInputs(int[] numbers)
+        private bool validateContextInputs()
         {
-            var dict = new Dictionary<int, bool>() { {0, false}, {1, false}, {2, false}, {3, false}, {4, false}, {5, false}, {6, false}, {7, false}, {8, false}, {9, false} };
-            foreach(int n in numbers)
+            foreach(int n in userNumbers)
             {
-                if (dict[n] == true)
+                if (userNumberDict[n] == true)
                 {
                     MessageBox.Show("Èísla se nesmí opakovat!", "", MessageBoxButtons.OK);
                     return false;
                 }
                 else
                 {
-                    dict[n] = true;
+                    userNumberDict[n] = true;
                 }
             }
             return true;

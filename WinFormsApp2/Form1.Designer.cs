@@ -54,7 +54,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.compN2 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.logBox = new System.Windows.Forms.RichTextBox();
             this.newTurnBtn = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
@@ -304,21 +304,20 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.richTextBox1);
+            this.panel3.Controls.Add(this.logBox);
             this.panel3.Location = new System.Drawing.Point(480, 64);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(228, 250);
             this.panel3.TabIndex = 2;
             // 
-            // richTextBox1
+            // logBox
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(228, 250);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.logBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logBox.Location = new System.Drawing.Point(0, 0);
+            this.logBox.Name = "logBox";
+            this.logBox.Size = new System.Drawing.Size(228, 250);
+            this.logBox.TabIndex = 0;
+            this.logBox.Text = "";
             // 
             // newTurnBtn
             // 
@@ -389,7 +388,7 @@
         private Label label10;
         private TextBox compN2;
         private Button newTurnBtn;
-        private RichTextBox richTextBox1;
+        private RichTextBox logBox;
         private ErrorProvider errorProvider1;
     }
 }
