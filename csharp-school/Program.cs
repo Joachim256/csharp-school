@@ -20,7 +20,7 @@
                 Console.Write("\nZadejte známku (č. {0}): ", i + 1);
 				char z = Console.ReadKey().KeyChar;
 				znamky[i] = (uint)(z - 0x30);
-				if(z >= 0x30 && z <= 0x39) { break; }
+				if(z > 0x30 && z <= 0x35) { break; }
             }
         }
 		Console.WriteLine();
@@ -32,5 +32,7 @@
 		}
 		float avg = (float)suma / pocet;
 		Console.WriteLine("Váš průměr je: {0}", avg);
+		Console.WriteLine("Nejlepší známka: {0}", znamky.Min());
+		Console.WriteLine("Nejhorší známka: {0}", znamky.Max());
 	}
 }
