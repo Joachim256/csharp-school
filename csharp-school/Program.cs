@@ -24,15 +24,27 @@
             }
         }
 		Console.WriteLine();
-		Console.WriteLine("Zadali jste známky: {0}", String.Join("; ", znamky));
+		Console.WriteLine("Zadali jste známky: {0}\n", String.Join("; ", znamky));
 		uint suma = 0;
-		for (int i = 0; i < pocet; i++)
+		uint nejlepsi = 6; uint nejlepsiIndex = 0;
+		uint nejhorsi = 0; uint nejhorsiIndex = 0;
+		for (uint i = 0; i < pocet; i++)
 		{
 			suma += znamky[i];
+			if (znamky[i] < nejlepsi)
+			{
+				nejlepsi = znamky[i];
+				nejlepsiIndex = i;
+			}
+			if (znamky[i] > nejhorsi)
+			{
+				nejhorsi = znamky[i];
+				nejhorsiIndex = i;
+			}
 		}
 		float avg = (float)suma / pocet;
 		Console.WriteLine("Váš průměr je: {0}", avg);
-		Console.WriteLine("Nejlepší známka: {0}", znamky.Min());
-		Console.WriteLine("Nejhorší známka: {0}", znamky.Max());
+		Console.WriteLine("Nejlepší známka: {0} (č. {1})", nejlepsi, nejlepsiIndex + 1);
+		Console.WriteLine("Nejhorší známka: {0} (č. {1})", nejhorsi, nejhorsiIndex + 1);
 	}
 }
