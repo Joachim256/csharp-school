@@ -16,10 +16,6 @@ namespace WinFormsApp2
         private void Form1_Load(object sender, EventArgs e)
         {
             InitTable();
-            GenerateNumbers();
-            double avg = CalculateAverage();
-            avgTextBox.Text = avg.ToString();
-            MarkGreater(avg);
         }
         private void GenerateNumbers()
         {
@@ -52,17 +48,16 @@ namespace WinFormsApp2
         private void MarkGreater(double average)
         {
             int marked = 0;
-            for(int x = 0; x < gridSize; x++)
+            DataGridViewCellStyle markedStyle = new DataGridViewCellStyle();
+            markedStyle.BackColor = Color.Aqua;
+            for (int x = 0; x < gridSize; x++)
             {
                 for(int y = 0; y < gridSize; y++)
                 {
                     int val = int.Parse(grid.Rows[y].Cells[x].Value.ToString());
                     if(val > average)
                     {
-                        DataGridViewCellStyle style = new DataGridViewCellStyle();
-                        style.BackColor = Color.Aqua;
-                        //style.ForeColor = Color.Black;
-                        grid.Rows[y].Cells[x].Style = style;
+                        grid.Rows[y].Cells[x].Style = markedStyle;
                         marked++;
                     }
                 }
@@ -78,6 +73,30 @@ namespace WinFormsApp2
                 grid.Columns[i].Width = cellSize;
                 grid.Rows[i].Height = cellSize;
             }
+        }
+        private void ClearGridColors()
+        {
+            DataGridViewCellStyle resetStyle = new DataGridViewCellStyle();
+            for (int x = 0; x < gridSize; x++)
+            {
+                for (int y = 0; y < gridSize; y++)
+                {
+                    grid.Rows[y].Cells[x].Style = resetStyle;
+                }
+            }
+        }
+
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            ClearGridColors();
+            GenerateNumbers();
+        }
+
+        private void markBtn_Click(object sender, EventArgs e)
+        {
+            double avg = CalculateAverage();
+            avgTextBox.Text = avg.ToString();
+            MarkGreater(avg);
         }
     }
 }
