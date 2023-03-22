@@ -6,5 +6,11 @@ namespace WinFormsApp2
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            grid.ColumnCount = 10;
+            grid.RowCount = 10;
+        }
     }
 }
