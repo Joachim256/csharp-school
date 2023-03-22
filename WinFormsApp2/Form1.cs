@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace WinFormsApp2
 {
     public partial class Form1 : Form
@@ -15,6 +17,8 @@ namespace WinFormsApp2
         {
             InitTable();
             GenerateNumbers();
+            double avg = CalculateAverage();
+            MarkGreater(avg);
         }
         private void GenerateNumbers()
         {
@@ -28,6 +32,36 @@ namespace WinFormsApp2
                     data[x, y] = n;
                     // render
                     grid.Rows[y].Cells[x].Value = n;
+                }
+            }
+        }
+        private double CalculateAverage()
+        {
+            int sum = 0;
+            for(int x = 0; x < gridSize; x++)
+            {
+                for(int y = 0; y < gridSize; y++)
+                {
+                    sum += int.Parse(grid.Rows[y].Cells[x].Value.ToString());
+                }
+            }
+
+            return (sum / Math.Pow(gridSize, 2));
+        }
+        private void MarkGreater(double average)
+        {
+            for(int x = 0; x < gridSize; x++)
+            {
+                for(int y = 0; y < gridSize; y++)
+                {
+                    int val = int.Parse(grid.Rows[y].Cells[x].Value.ToString());
+                    if(val > average)
+                    {
+                        DataGridViewCellStyle style = new DataGridViewCellStyle();
+                        style.BackColor = Color.Aqua;
+                        //style.ForeColor = Color.Black;
+                        grid.Rows[y].Cells[x].Style = style;
+                    }
                 }
             }
         }
