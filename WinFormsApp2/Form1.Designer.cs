@@ -60,13 +60,13 @@
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grid.ColumnHeadersVisible = false;
             this.grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grid.ScrollBars = ScrollBars.None;
             this.grid.Enabled = false;
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowTemplate.Height = 25;
+            this.grid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.grid.Size = new System.Drawing.Size(500, 500);
             this.grid.TabIndex = 0;
             // 
@@ -180,6 +180,7 @@
             this.animationStepBtn.TabIndex = 6;
             this.animationStepBtn.Text = "Krok";
             this.animationStepBtn.UseVisualStyleBackColor = true;
+            this.animationStepBtn.Click += new System.EventHandler(this.animationStepBtn_Click);
             // 
             // generateCellsBtn
             // 

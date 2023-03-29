@@ -95,7 +95,24 @@ namespace WinFormsApp2
         }
         private void calculateNextStage()
         {
-
+            bool[,] next = new bool[gridSize, gridSize];
+            for(int x = 0; x < gridSize; x++)
+            {
+                for(int y = 0; y < gridSize; y++)
+                {
+                    // count alive neighbors
+                    int aliveNeighbors = 0;
+                    if (x != 0 && game[x-1, y] == true) { aliveNeighbors++; }
+                    if (x != gridSize - 1 && game[x+1, y] == true) { aliveNeighbors++; }
+                    if (y != 0 && game[x, y-1] == true) { aliveNeighbors++; }
+                    if (y != gridSize - 1 && game[x, y+1] == true) { aliveNeighbors++; }
+                    if (x != 0 && y != 0 && game[x-1, y-1] == true) { aliveNeighbors++; }
+                    if (x != 0 && y != gridSize - 1 && game[x-1, y+1] == true) { aliveNeighbors++; }
+                    if (x != gridSize - 1 && y != 0 && game[x+1, y-1] == true) { aliveNeighbors++; }
+                    if (x != gridSize - 1 && y != gridSize - 1 && game[x+1, y+1] == true) { aliveNeighbors++; }
+                    grid.Rows[y].Cells[x].Value = aliveNeighbors.ToString();
+                }
+            }
         }
 
         
