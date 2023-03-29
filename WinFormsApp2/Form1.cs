@@ -45,6 +45,11 @@ namespace WinFormsApp2
             generateCells();
             updateCells();
         }
+        private void animationStepBtn_Click(object sender, EventArgs e)
+        {
+            calculateNextStage();
+            updateCells();
+        }
         // Functions
         private void InitTable()
         {
@@ -110,11 +115,34 @@ namespace WinFormsApp2
                     if (x != 0 && y != gridSize - 1 && game[x-1, y+1] == true) { aliveNeighbors++; }
                     if (x != gridSize - 1 && y != 0 && game[x+1, y-1] == true) { aliveNeighbors++; }
                     if (x != gridSize - 1 && y != gridSize - 1 && game[x+1, y+1] == true) { aliveNeighbors++; }
-                    grid.Rows[y].Cells[x].Value = aliveNeighbors.ToString();
+                    // apply rules
+                    if (game[x, y] == true)
+                    {
+                        if(aliveNeighbors < 2)
+                        {
+                            next[x, y] = false;
+                        }else if(aliveNeighbors > 4)
+                        {
+                            next[x, y] = false;
+                        }
+                        else
+                        {
+                            next[x, y] = game[x, y];
+                        }
+                    }
+                    else
+                    {
+                        if(aliveNeighbors == 3)
+                        {
+                            next[x, y] = true;
+                        }
+                        else
+                        {
+                            next[x, y] = game[x, y];
+                        }
+                    }
                 }
             }
         }
-
-        
     }
 }
