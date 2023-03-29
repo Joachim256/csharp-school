@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System.Runtime.CompilerServices;
 
 namespace WinFormsApp2
@@ -9,7 +10,6 @@ namespace WinFormsApp2
             InitializeComponent();
         }
         private const int gridSize = 30;
-        private const int cellSize = 10;
 
         DataGridViewCellStyle aliveStyle = new DataGridViewCellStyle();
         DataGridViewCellStyle deadStyle = new DataGridViewCellStyle();
@@ -42,13 +42,15 @@ namespace WinFormsApp2
         // Actions
         private void generateCellsBtn_Click(object sender, EventArgs e)
         {
-            
+            generateCells();
+            updateCells();
         }
         // Functions
         private void InitTable()
         {
             grid.ColumnCount = gridSize;
             grid.RowCount = gridSize;
+            int cellSize = grid.Width / (gridSize);
             for (int i = 0; i < gridSize; i++)
             {
                 grid.Columns[i].Width = cellSize;
@@ -58,7 +60,18 @@ namespace WinFormsApp2
         }
         private void generateCells()
         {
+            clearCells();
+            var rng = new Random();
+            int count = Convert.ToInt16(generateCount.Value);
+            for(int i = 0; i < count; i++)
+            {
+                int x = rng.Next(0, gridSize);
+                int y = rng.Next(0, gridSize);
 
+                if (game[x, y]) { continue; }
+
+                game[x, y] = true;
+            }
         }
         private void updateCells()
         {
@@ -67,6 +80,16 @@ namespace WinFormsApp2
                 for(int x = 0; x < gridSize; x++)
                 {
                     grid.Rows[y].Cells[x].Style = game[x,y] ? aliveStyle : deadStyle;
+                }
+            }
+        }
+        private void clearCells()
+        {
+            for(int x = 0; x < gridSize; x++)
+            {
+                for(int y = 0; y < gridSize; y++)
+                {
+                    game[x, y] = false;
                 }
             }
         }

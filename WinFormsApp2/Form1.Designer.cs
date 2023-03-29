@@ -42,12 +42,12 @@
             this.animationStepBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.generateCellsBtn = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.generateCount = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.animationSpeedInput)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generateCount)).BeginInit();
             this.SuspendLayout();
             // 
             // grid
@@ -60,20 +60,21 @@
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grid.ColumnHeadersVisible = false;
             this.grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grid.ScrollBars = ScrollBars.None;
             this.grid.Enabled = false;
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(411, 404);
+            this.grid.Size = new System.Drawing.Size(500, 500);
             this.grid.TabIndex = 0;
             // 
             // animationMode1
             // 
             this.animationMode1.AutoSize = true;
             this.animationMode1.Checked = true;
-            this.animationMode1.Location = new System.Drawing.Point(433, 12);
+            this.animationMode1.Location = new System.Drawing.Point(522, 12);
             this.animationMode1.Name = "animationMode1";
             this.animationMode1.Size = new System.Drawing.Size(83, 19);
             this.animationMode1.TabIndex = 2;
@@ -85,7 +86,7 @@
             // animationMode2
             // 
             this.animationMode2.AutoSize = true;
-            this.animationMode2.Location = new System.Drawing.Point(636, 12);
+            this.animationMode2.Location = new System.Drawing.Point(725, 12);
             this.animationMode2.Name = "animationMode2";
             this.animationMode2.Size = new System.Drawing.Size(78, 19);
             this.animationMode2.TabIndex = 3;
@@ -109,7 +110,7 @@
             this.panel1.Controls.Add(this.animationSpeedInput);
             this.panel1.Controls.Add(this.animationStopBtn);
             this.panel1.Controls.Add(this.animationStartBtn);
-            this.panel1.Location = new System.Drawing.Point(433, 37);
+            this.panel1.Location = new System.Drawing.Point(522, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(157, 213);
             this.panel1.TabIndex = 6;
@@ -166,7 +167,7 @@
             // 
             this.panel2.Controls.Add(this.animationStepBtn);
             this.panel2.Enabled = false;
-            this.panel2.Location = new System.Drawing.Point(606, 37);
+            this.panel2.Location = new System.Drawing.Point(695, 37);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(157, 213);
             this.panel2.TabIndex = 7;
@@ -182,7 +183,7 @@
             // 
             // generateCellsBtn
             // 
-            this.generateCellsBtn.Location = new System.Drawing.Point(433, 309);
+            this.generateCellsBtn.Location = new System.Drawing.Point(522, 309);
             this.generateCellsBtn.Name = "generateCellsBtn";
             this.generateCellsBtn.Size = new System.Drawing.Size(157, 34);
             this.generateCellsBtn.TabIndex = 8;
@@ -190,23 +191,23 @@
             this.generateCellsBtn.UseVisualStyleBackColor = true;
             this.generateCellsBtn.Click += new System.EventHandler(this.generateCellsBtn_Click);
             // 
-            // numericUpDown1
+            // generateCount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(433, 280);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.generateCount.Location = new System.Drawing.Point(522, 280);
+            this.generateCount.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.generateCount.Minimum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(83, 23);
-            this.numericUpDown1.TabIndex = 9;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.generateCount.Name = "generateCount";
+            this.generateCount.Size = new System.Drawing.Size(83, 23);
+            this.generateCount.TabIndex = 9;
+            this.generateCount.Value = new decimal(new int[] {
             50,
             0,
             0,
@@ -216,8 +217,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.numericUpDown1);
+            this.ClientSize = new System.Drawing.Size(889, 527);
+            this.Controls.Add(this.generateCount);
             this.Controls.Add(this.generateCellsBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -233,7 +234,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.animationSpeedInput)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generateCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,6 +254,6 @@
         private System.Windows.Forms.Timer timer1;
         private Label animationStatusIco;
         private Button generateCellsBtn;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown generateCount;
     }
 }
