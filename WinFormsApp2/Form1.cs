@@ -73,7 +73,7 @@ namespace WinFormsApp2
                 int x = rng.Next(0, gridSize);
                 int y = rng.Next(0, gridSize);
 
-                if (game[x, y]) { continue; }
+                if (game[x, y]) { i--; continue; }
 
                 game[x, y] = true;
             }
