@@ -20,6 +20,7 @@ namespace WinFormsApp2
         {
             aliveStyle.BackColor = Color.Black;
             deadStyle.BackColor = Color.White;
+            generateCount.Maximum = gridSize * gridSize;
             InitTable();
         }
         // UI
