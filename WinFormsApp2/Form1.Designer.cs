@@ -102,6 +102,7 @@
             this.animationStartBtn.TabIndex = 4;
             this.animationStartBtn.Text = "Start";
             this.animationStartBtn.UseVisualStyleBackColor = true;
+            this.animationStartBtn.Click += new System.EventHandler(this.animationStartBtn_Click);
             // 
             // panel1
             // 
@@ -136,7 +137,7 @@
             // 
             this.animationSpeedInput.Location = new System.Drawing.Point(16, 93);
             this.animationSpeedInput.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
@@ -149,19 +150,22 @@
             this.animationSpeedInput.Size = new System.Drawing.Size(120, 23);
             this.animationSpeedInput.TabIndex = 5;
             this.animationSpeedInput.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
+            this.animationSpeedInput.ValueChanged += new System.EventHandler(this.animationSpeedInput_ValueChanged);
             // 
             // animationStopBtn
             // 
+            this.animationStopBtn.Enabled = false;
             this.animationStopBtn.Location = new System.Drawing.Point(16, 45);
             this.animationStopBtn.Name = "animationStopBtn";
             this.animationStopBtn.Size = new System.Drawing.Size(75, 23);
             this.animationStopBtn.TabIndex = 4;
             this.animationStopBtn.Text = "Stop";
             this.animationStopBtn.UseVisualStyleBackColor = true;
+            this.animationStopBtn.Click += new System.EventHandler(this.animationStopBtn_Click);
             // 
             // panel2
             // 
@@ -181,6 +185,11 @@
             this.animationStepBtn.Text = "Krok";
             this.animationStepBtn.UseVisualStyleBackColor = true;
             this.animationStepBtn.Click += new System.EventHandler(this.animationStepBtn_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1100;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // generateCellsBtn
             // 
