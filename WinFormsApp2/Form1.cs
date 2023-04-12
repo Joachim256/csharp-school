@@ -163,7 +163,7 @@ namespace WinFormsApp2
                         if(aliveNeighbors < 2)
                         {
                             next[x, y] = false;
-                        }else if(aliveNeighbors > 4)
+                        }else if(aliveNeighbors > 3)
                         {
                             next[x, y] = false;
                         }
