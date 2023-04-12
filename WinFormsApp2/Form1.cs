@@ -143,6 +143,7 @@ namespace WinFormsApp2
                     }
                 }
             }
+            game = next;
         }
     }
 }
