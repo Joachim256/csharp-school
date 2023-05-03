@@ -1,6 +1,6 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
-		Console.WriteLine("Textová sčítačka v0.1");
+		Console.WriteLine("Textová sčítačka v1.0");
 
 		Console.WriteLine("Napište libovolnou větu obsahující čísla a zjistíte součet všech:");
 		string str = Console.ReadLine();
