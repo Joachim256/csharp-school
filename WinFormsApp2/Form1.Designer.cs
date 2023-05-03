@@ -84,6 +84,7 @@
             this.calc1Btn.TabIndex = 5;
             this.calc1Btn.Text = "=";
             this.calc1Btn.UseVisualStyleBackColor = true;
+            this.calc1Btn.Click += new System.EventHandler(this.calc1Btn_Click);
             // 
             // calc2Btn
             // 
@@ -94,6 +95,7 @@
             this.calc2Btn.TabIndex = 6;
             this.calc2Btn.Text = "=";
             this.calc2Btn.UseVisualStyleBackColor = true;
+            this.calc2Btn.Click += new System.EventHandler(this.calc2Btn_Click);
             // 
             // calc1Result
             // 
