@@ -28,4 +28,13 @@
 
 		return numbers;
 	}
+	private static int Sum(List<int> numbers)
+	{
+		int sum = 0;
+		foreach(int n in numbers)
+		{
+			sum += n;
+		}
+		return sum;
+	}
 }
