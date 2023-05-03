@@ -1,6 +1,23 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
 		Console.WriteLine("Textová sčítačka v0.1");
+
+		Console.WriteLine("Napište libovolnou větu obsahující čísla a zjistíte součet všech:");
+		string str = Console.ReadLine();
+		List<int> numbers = ExtractNumbers(str);
+		int sum = Sum(numbers);
+
+		string output = "";
+		for(int i = 0; i < numbers.Count; i++)
+		{
+			output += numbers[i];
+			if (i < numbers.Count -1)
+			{
+				output += " + ";
+			}
+		}
+		output += " = " + sum;
+		Console.WriteLine(output);
 	}
 	private static List<int> ExtractNumbers(string input)
 	{
