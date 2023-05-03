@@ -40,7 +40,12 @@ namespace WinFormsApp2
         }
         private int Mocnina(int expBase, int exponent = 2)
         {
-            return exponent;
+            int res = 1;
+            for(int i = 0; i < exponent; i++)
+            {
+                res *= expBase;
+            }
+            return res;
         }
     }
 }
