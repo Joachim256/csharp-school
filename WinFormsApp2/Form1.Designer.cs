@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            dataGridView1 = new DataGridView();
+            gameGrid = new DataGridView();
             panel1 = new Panel();
             panel3 = new Panel();
+            player2Score = new Label();
+            label4 = new Label();
             player2Name = new Label();
             panel2 = new Panel();
-            player1Name = new Label();
-            label3 = new Label();
-            label4 = new Label();
             player1Score = new Label();
-            player2Score = new Label();
+            label3 = new Label();
+            player1Name = new Label();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gameGrid).BeginInit();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -50,7 +50,7 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 1);
+            tableLayoutPanel1.Controls.Add(gameGrid, 0, 1);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
@@ -61,18 +61,35 @@
             tableLayoutPanel1.Size = new Size(728, 439);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // gameGrid
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 69);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(722, 367);
-            dataGridView1.TabIndex = 0;
+            gameGrid.AllowUserToAddRows = false;
+            gameGrid.AllowUserToDeleteRows = false;
+            gameGrid.CausesValidation = false;
+            gameGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            gameGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gameGrid.ColumnHeadersVisible = false;
+            gameGrid.Dock = DockStyle.Fill;
+            gameGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
+            gameGrid.Location = new Point(3, 69);
+            gameGrid.MultiSelect = false;
+            gameGrid.Name = "gameGrid";
+            gameGrid.ReadOnly = true;
+            gameGrid.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            gameGrid.RowHeadersVisible = false;
+            gameGrid.RowTemplate.Height = 25;
+            gameGrid.ScrollBars = ScrollBars.None;
+            gameGrid.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            gameGrid.ShowCellErrors = false;
+            gameGrid.ShowCellToolTips = false;
+            gameGrid.ShowEditingIcon = false;
+            gameGrid.ShowRowErrors = false;
+            gameGrid.Size = new Size(722, 367);
+            gameGrid.TabIndex = 0;
+            gameGrid.ColumnWidthChanged += gameGrid_ColumnWidthChanged;
+            gameGrid.RowHeightChanged += gameGrid_RowHeightChanged;
+            gameGrid.SelectionChanged += gameGrid_SelectionChanged;
+            gameGrid.MouseDown += gameGrid_MouseDown;
             // 
             // panel1
             // 
@@ -95,6 +112,24 @@
             panel3.Size = new Size(200, 60);
             panel3.TabIndex = 2;
             // 
+            // player2Score
+            // 
+            player2Score.AutoSize = true;
+            player2Score.Location = new Point(48, 32);
+            player2Score.Name = "player2Score";
+            player2Score.Size = new Size(13, 15);
+            player2Score.TabIndex = 3;
+            player2Score.Text = "0";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(3, 32);
+            label4.Name = "label4";
+            label4.Size = new Size(39, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Skóre:";
+            // 
             // player2Name
             // 
             player2Name.AutoSize = true;
@@ -116,15 +151,14 @@
             panel2.Size = new Size(190, 60);
             panel2.TabIndex = 1;
             // 
-            // player1Name
+            // player1Score
             // 
-            player1Name.AutoSize = true;
-            player1Name.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            player1Name.Location = new Point(9, 6);
-            player1Name.Name = "player1Name";
-            player1Name.Size = new Size(55, 21);
-            player1Name.TabIndex = 0;
-            player1Name.Text = "Hráč 1";
+            player1Score.AutoSize = true;
+            player1Score.Location = new Point(54, 32);
+            player1Score.Name = "player1Score";
+            player1Score.Size = new Size(13, 15);
+            player1Score.TabIndex = 2;
+            player1Score.Text = "0";
             // 
             // label3
             // 
@@ -135,32 +169,15 @@
             label3.TabIndex = 1;
             label3.Text = "Skóre:";
             // 
-            // label4
+            // player1Name
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 32);
-            label4.Name = "label4";
-            label4.Size = new Size(39, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Skóre:";
-            // 
-            // player1Score
-            // 
-            player1Score.AutoSize = true;
-            player1Score.Location = new Point(54, 32);
-            player1Score.Name = "player1Score";
-            player1Score.Size = new Size(13, 15);
-            player1Score.TabIndex = 2;
-            player1Score.Text = "0";
-            // 
-            // player2Score
-            // 
-            player2Score.AutoSize = true;
-            player2Score.Location = new Point(48, 32);
-            player2Score.Name = "player2Score";
-            player2Score.Size = new Size(13, 15);
-            player2Score.TabIndex = 3;
-            player2Score.Text = "0";
+            player1Name.AutoSize = true;
+            player1Name.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            player1Name.Location = new Point(9, 6);
+            player1Name.Name = "player1Name";
+            player1Name.Size = new Size(55, 21);
+            player1Name.TabIndex = 0;
+            player1Name.Text = "Hráč 1";
             // 
             // ZapalkyForm
             // 
@@ -171,8 +188,12 @@
             MinimumSize = new Size(535, 370);
             Name = "ZapalkyForm";
             Text = "Zápalkovaná";
+            Load += ZapalkyForm_Load;
+            ResizeBegin += ZapalkyForm_ResizeBegin;
+            ResizeEnd += ZapalkyForm_ResizeEnd;
+            SizeChanged += ZapalkyForm_SizeChanged;
             tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gameGrid).EndInit();
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -184,7 +205,7 @@
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private DataGridView dataGridView1;
+        private DataGridView gameGrid;
         private Panel panel1;
         private Panel panel2;
         private Label player1Name;
