@@ -8,21 +8,43 @@ namespace WinFormsApp2
         {
             InitializeComponent();
         }
-        public void startGame()
-        {
 
+        enum Misto
+        {
+            Blank,
+            Sirka,
+        }
+        enum Sirka
+        {
+            Noones,
+            Player1s,
+            Player2s,
         }
 
+        private Misto[,] game = new Misto[10,10];
+        
         private int gameSize = 5;
         private bool ignoreCellResizeEvents = false;
         private int mouseX;
         private int mouseY;
+
+        private uint playerTurn = 0;
 
         private void initGameField()
         {
             gameGrid.ColumnCount = gameSize;
             gameGrid.RowCount = gameSize;
             updateCellSizes();
+        }
+        private void initGameArray()
+        {
+            for(int x = 0; x < gameSize; x++)
+            {
+                for(int y = 0; y < gameSize; y++)
+                {
+                    game[x, y] = Misto.Blank;
+                }
+            }
         }
         private void updateCellSizes()
         {
@@ -46,6 +68,10 @@ namespace WinFormsApp2
                 gameGrid.Rows[i].Height = cellSize;
             }
             ignoreCellResizeEvents = false;
+        }
+        private void placeSirka(int x, int y)
+        {
+
         }
         // events
         private void ZapalkyForm_Load(object sender, EventArgs e)
