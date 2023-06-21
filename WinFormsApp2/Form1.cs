@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic;
+using System.Runtime.CompilerServices;
 
 namespace WinFormsApp2
 {
@@ -9,32 +10,22 @@ namespace WinFormsApp2
             InitializeComponent();
         }
 
-        enum Misto
-        {
-            Blank,
-            Sirka,
-        }
-        enum Sirka
-        {
-            Noones,
-            Player1s,
-            Player2s,
-        }
-
-        private Misto[,] game = new Misto[10,10];
-        
         private int gameSize = 5;
-        private bool ignoreCellResizeEvents = false;
-        private int mouseX;
-        private int mouseY;
+
+        enum Misto { Empty, Player1, Player2 };
+        private Misto[,] game = new Misto[10, 10];
 
         private uint playerTurn = 0;
 
         private void initGameField()
         {
-            gameGrid.ColumnCount = gameSize;
-            gameGrid.RowCount = gameSize;
+            gameGrid.ColumnCount = gameSize * 2 - 1;
+            gameGrid.RowCount = gameSize * 2 - 1;
             updateCellSizes();
+        }
+        private void updatePlayerTurnBold()
+        {
+            (playerTurn == 0 ? player1Name : player2Name).Font = new Font(player1Name.Font, FontStyle.Bold);
         }
         private void initGameArray()
         {
@@ -42,7 +33,7 @@ namespace WinFormsApp2
             {
                 for(int y = 0; y < gameSize; y++)
                 {
-                    game[x, y] = Misto.Blank;
+                    game[x, y] = Misto.Empty;
                 }
             }
         }
@@ -50,33 +41,41 @@ namespace WinFormsApp2
         {
             int gw = gameGrid.Width;
             int gh = gameGrid.Height;
-            int cellSize;
+            int smaller;
 
             if (gw > gh)
             {
-                cellSize = gh / gameSize;
+                smaller = gh;
             }
             else
             {
-                cellSize = gw / gameSize;
+                smaller = gw;
             }
+            int edgeSize = (int)(0.2 * smaller / gameSize);
+            int innerSize = (int)(0.8 * smaller / (gameSize - 1));
 
-            ignoreCellResizeEvents = true;
-            for (int i = 0; i < gameSize; i++)
+            for (int i = 0; i < gameSize * 2 - 1; i++)
             {
-                gameGrid.Columns[i].Width = cellSize;
-                gameGrid.Rows[i].Height = cellSize;
+                if(i % 2 == 0)
+                {
+                    // edge
+                    gameGrid.Columns[i].Width = edgeSize;
+                    gameGrid.Rows[i].Height = edgeSize;
+                }
+                else
+                {
+                    // inner
+                    gameGrid.Columns[i].Width = innerSize;
+                    gameGrid.Rows[i].Height = innerSize;
+                }
             }
-            ignoreCellResizeEvents = false;
-        }
-        private void placeSirka(int x, int y)
-        {
-
         }
         // events
         private void ZapalkyForm_Load(object sender, EventArgs e)
         {
             initGameField();
+            initGameArray();
+            updatePlayerTurnBold();
         }
 
         private void gameGrid_SelectionChanged(object sender, EventArgs e)
@@ -84,36 +83,16 @@ namespace WinFormsApp2
             gameGrid.ClearSelection();
         }
 
-        private void gameGrid_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
-        {
-            if (ignoreCellResizeEvents) { return; }
-            Console.WriteLine(e.Column.Index);
-            updateCellSizes();
-        }
-        private void gameGrid_RowHeightChanged(object sender, DataGridViewRowEventArgs e)
-        {
-            if (ignoreCellResizeEvents) { return; }
-            Console.WriteLine(e.Row.Index);
-            updateCellSizes();
-        }
-        private void ZapalkyForm_SizeChanged(object sender, EventArgs e)
+        private void gameGrid_SizeChanged(object sender, EventArgs e)
         {
             updateCellSizes();
         }
 
-        private void ZapalkyForm_ResizeBegin(object sender, EventArgs e)
+        private void gameGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ignoreCellResizeEvents = true;
-        }
-        private void ZapalkyForm_ResizeEnd(object sender, EventArgs e)
-        {
-            ignoreCellResizeEvents = false;
-        }
-
-        private void gameGrid_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseX = e.X;
-            mouseY = e.Y;
+            if(! (e.RowIndex % 2 == 0 ^ e.ColumnIndex % 2 == 0)) { return; }
+            // todo: play zapalka
+            //gameGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
         }
     }
 }

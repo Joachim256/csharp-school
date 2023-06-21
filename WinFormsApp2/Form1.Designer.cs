@@ -28,178 +28,180 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanel1 = new TableLayoutPanel();
-            gameGrid = new DataGridView();
-            panel1 = new Panel();
-            panel3 = new Panel();
-            player2Score = new Label();
-            label4 = new Label();
-            player2Name = new Label();
-            panel2 = new Panel();
-            player1Score = new Label();
-            label3 = new Label();
-            player1Name = new Label();
-            tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gameGrid).BeginInit();
-            panel1.SuspendLayout();
-            panel3.SuspendLayout();
-            panel2.SuspendLayout();
-            SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gameGrid = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.player2Score = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.player2Name = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.player1Score = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.player1Name = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameGrid)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(gameGrid, 0, 1);
-            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15.1111107F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 84.8888855F));
-            tableLayoutPanel1.Size = new Size(728, 439);
-            tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.gameGrid, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.88889F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(728, 439);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // gameGrid
             // 
-            gameGrid.AllowUserToAddRows = false;
-            gameGrid.AllowUserToDeleteRows = false;
-            gameGrid.CausesValidation = false;
-            gameGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            gameGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gameGrid.ColumnHeadersVisible = false;
-            gameGrid.Dock = DockStyle.Fill;
-            gameGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
-            gameGrid.Location = new Point(3, 69);
-            gameGrid.MultiSelect = false;
-            gameGrid.Name = "gameGrid";
-            gameGrid.ReadOnly = true;
-            gameGrid.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            gameGrid.RowHeadersVisible = false;
-            gameGrid.RowTemplate.Height = 25;
-            gameGrid.ScrollBars = ScrollBars.None;
-            gameGrid.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            gameGrid.ShowCellErrors = false;
-            gameGrid.ShowCellToolTips = false;
-            gameGrid.ShowEditingIcon = false;
-            gameGrid.ShowRowErrors = false;
-            gameGrid.Size = new Size(722, 367);
-            gameGrid.TabIndex = 0;
-            gameGrid.ColumnWidthChanged += gameGrid_ColumnWidthChanged;
-            gameGrid.RowHeightChanged += gameGrid_RowHeightChanged;
-            gameGrid.SelectionChanged += gameGrid_SelectionChanged;
-            gameGrid.MouseDown += gameGrid_MouseDown;
+            this.gameGrid.AllowUserToAddRows = false;
+            this.gameGrid.AllowUserToDeleteRows = false;
+            this.gameGrid.AllowUserToResizeColumns = false;
+            this.gameGrid.AllowUserToResizeRows = false;
+            this.gameGrid.CausesValidation = false;
+            this.gameGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.gameGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gameGrid.ColumnHeadersVisible = false;
+            this.gameGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gameGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gameGrid.EnableHeadersVisualStyles = false;
+            this.gameGrid.Location = new System.Drawing.Point(3, 69);
+            this.gameGrid.MultiSelect = false;
+            this.gameGrid.Name = "gameGrid";
+            this.gameGrid.ReadOnly = true;
+            this.gameGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.gameGrid.RowHeadersVisible = false;
+            this.gameGrid.RowTemplate.Height = 25;
+            this.gameGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.gameGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.gameGrid.ShowCellErrors = false;
+            this.gameGrid.ShowCellToolTips = false;
+            this.gameGrid.ShowEditingIcon = false;
+            this.gameGrid.ShowRowErrors = false;
+            this.gameGrid.Size = new System.Drawing.Size(722, 367);
+            this.gameGrid.TabIndex = 0;
+            this.gameGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gameGrid_CellClick);
+            this.gameGrid.SelectionChanged += new System.EventHandler(this.gameGrid_SelectionChanged);
+            this.gameGrid.SizeChanged += new System.EventHandler(this.gameGrid_SizeChanged);
             // 
             // panel1
             // 
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(722, 60);
-            panel1.TabIndex = 1;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(722, 60);
+            this.panel1.TabIndex = 1;
             // 
             // panel3
             // 
-            panel3.Controls.Add(player2Score);
-            panel3.Controls.Add(label4);
-            panel3.Controls.Add(player2Name);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(522, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(200, 60);
-            panel3.TabIndex = 2;
+            this.panel3.BackColor = System.Drawing.Color.DarkCyan;
+            this.panel3.Controls.Add(this.player2Score);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.player2Name);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(522, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 60);
+            this.panel3.TabIndex = 2;
             // 
             // player2Score
             // 
-            player2Score.AutoSize = true;
-            player2Score.Location = new Point(48, 32);
-            player2Score.Name = "player2Score";
-            player2Score.Size = new Size(13, 15);
-            player2Score.TabIndex = 3;
-            player2Score.Text = "0";
+            this.player2Score.AutoSize = true;
+            this.player2Score.Location = new System.Drawing.Point(48, 32);
+            this.player2Score.Name = "player2Score";
+            this.player2Score.Size = new System.Drawing.Size(13, 15);
+            this.player2Score.TabIndex = 3;
+            this.player2Score.Text = "0";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 32);
-            label4.Name = "label4";
-            label4.Size = new Size(39, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Skóre:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Skóre:";
             // 
             // player2Name
             // 
-            player2Name.AutoSize = true;
-            player2Name.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            player2Name.Location = new Point(3, 6);
-            player2Name.Name = "player2Name";
-            player2Name.Size = new Size(55, 21);
-            player2Name.TabIndex = 1;
-            player2Name.Text = "Hráč 2";
+            this.player2Name.AutoSize = true;
+            this.player2Name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.player2Name.Location = new System.Drawing.Point(3, 6);
+            this.player2Name.Name = "player2Name";
+            this.player2Name.Size = new System.Drawing.Size(55, 21);
+            this.player2Name.TabIndex = 1;
+            this.player2Name.Text = "Hráč 2";
             // 
             // panel2
             // 
-            panel2.Controls.Add(player1Score);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(player1Name);
-            panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(190, 60);
-            panel2.TabIndex = 1;
+            this.panel2.BackColor = System.Drawing.Color.Green;
+            this.panel2.Controls.Add(this.player1Score);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.player1Name);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(190, 60);
+            this.panel2.TabIndex = 1;
             // 
             // player1Score
             // 
-            player1Score.AutoSize = true;
-            player1Score.Location = new Point(54, 32);
-            player1Score.Name = "player1Score";
-            player1Score.Size = new Size(13, 15);
-            player1Score.TabIndex = 2;
-            player1Score.Text = "0";
+            this.player1Score.AutoSize = true;
+            this.player1Score.Location = new System.Drawing.Point(54, 32);
+            this.player1Score.Name = "player1Score";
+            this.player1Score.Size = new System.Drawing.Size(13, 15);
+            this.player1Score.TabIndex = 2;
+            this.player1Score.Text = "0";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(9, 32);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 1;
-            label3.Text = "Skóre:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 15);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Skóre:";
             // 
             // player1Name
             // 
-            player1Name.AutoSize = true;
-            player1Name.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            player1Name.Location = new Point(9, 6);
-            player1Name.Name = "player1Name";
-            player1Name.Size = new Size(55, 21);
-            player1Name.TabIndex = 0;
-            player1Name.Text = "Hráč 1";
+            this.player1Name.AutoSize = true;
+            this.player1Name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.player1Name.Location = new System.Drawing.Point(9, 6);
+            this.player1Name.Name = "player1Name";
+            this.player1Name.Size = new System.Drawing.Size(55, 21);
+            this.player1Name.TabIndex = 0;
+            this.player1Name.Text = "Hráč 1";
             // 
             // ZapalkyForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(728, 439);
-            Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(535, 370);
-            Name = "ZapalkyForm";
-            Text = "Zápalkovaná";
-            Load += ZapalkyForm_Load;
-            ResizeBegin += ZapalkyForm_ResizeBegin;
-            ResizeEnd += ZapalkyForm_ResizeEnd;
-            SizeChanged += ZapalkyForm_SizeChanged;
-            tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gameGrid).EndInit();
-            panel1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(728, 439);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(535, 370);
+            this.Name = "ZapalkyForm";
+            this.Text = "Zápalkovaná";
+            this.Load += new System.EventHandler(this.ZapalkyForm_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gameGrid)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
