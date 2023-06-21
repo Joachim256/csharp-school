@@ -13,9 +13,10 @@ namespace WinFormsApp2
         private int gameSize = 5;
 
         enum Misto { Empty, Player1, Player2 };
-        private Misto[,] game = new Misto[10, 10];
+        private Misto[,] game = new Misto[15, 15];
 
-        private uint playerTurn = 0;
+        private Misto playerTurn = Misto.Player1;
+        Dictionary<Misto, Color> playerColors = new Dictionary<Misto, Color>();
 
         private void initGameField()
         {
@@ -25,7 +26,8 @@ namespace WinFormsApp2
         }
         private void updatePlayerTurnBold()
         {
-            (playerTurn == 0 ? player1Name : player2Name).Font = new Font(player1Name.Font, FontStyle.Bold);
+            (playerTurn == Misto.Player1 ? player1Name : player2Name).Font = new Font(player1Name.Font, FontStyle.Bold);
+            (playerTurn == Misto.Player1 ? player2Name : player1Name).Font = new Font(player1Name.Font, FontStyle.Regular);
         }
         private void initGameArray()
         {
@@ -70,9 +72,32 @@ namespace WinFormsApp2
                 }
             }
         }
+        private void placeMove(int x, int y)
+        {
+            if (game[x, y] != Misto.Empty) { return; }
+
+            game[x, y] = playerTurn;
+            gameGrid.Rows[y].Cells[x].Style.BackColor = playerColors[playerTurn];
+
+            detectScore();
+
+            toggleTurn();
+        }
+        private void detectScore()
+        {
+
+        }
+        private void toggleTurn()
+        {
+            playerTurn = playerTurn == Misto.Player1 ? Misto.Player2 : Misto.Player1;
+            updatePlayerTurnBold();
+        }
         // events
         private void ZapalkyForm_Load(object sender, EventArgs e)
         {
+            playerColors[Misto.Player1] = Color.Green;
+            playerColors[Misto.Player2] = Color.DarkCyan;
+
             initGameField();
             initGameArray();
             updatePlayerTurnBold();
@@ -91,8 +116,8 @@ namespace WinFormsApp2
         private void gameGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(! (e.RowIndex % 2 == 0 ^ e.ColumnIndex % 2 == 0)) { return; }
-            // todo: play zapalka
-            //gameGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+            placeMove(e.ColumnIndex, e.RowIndex);
         }
     }
 }
