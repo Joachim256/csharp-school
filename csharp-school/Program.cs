@@ -1,6 +1,6 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
-		Console.WriteLine("Rozklad na součin prvočísel v0.1");
+		Console.WriteLine("Rozklad na součin prvočísel v1.0");
 		Console.WriteLine("Zadejte libovolné celé číslo (větší než 1) a bude vypsán jeho součin na prvočinitele:");
 
 		int n;
