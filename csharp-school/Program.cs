@@ -1,6 +1,6 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
-		Console.WriteLine("Stromeček v0.1");
+		Console.WriteLine("Stromeček v1.0");
 		Console.WriteLine("Zadejte liché číslo větší než 3 a bude Vám vykreslen stromeček o zadané šířce:");
 
 		int n;
