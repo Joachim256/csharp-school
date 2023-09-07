@@ -23,6 +23,16 @@
 			break;
         }
 
-		Console.WriteLine("číslo je {0}", n);
+		int height = n / 2 + 1;
+
+		for(int i = 0; i < height; i++)
+		{
+			int stars = 1 + i * 2;
+			int spaces = (n - stars) / 2;
+			for(int j = 0; j < spaces; j++) { Console.Write(" "); }
+			for(int j = 0; j < stars; j++) { Console.Write("*"); }
+			for(int j = 0; j < spaces; j++) { Console.Write(" "); }
+			Console.WriteLine();
+        }
 	}
 }
