@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            lettersBox = new TextBox();
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // lettersBox
+            // 
+            lettersBox.Location = new Point(12, 36);
+            lettersBox.Name = "lettersBox";
+            lettersBox.Size = new Size(176, 23);
+            lettersBox.TabIndex = 0;
+            lettersBox.TextChanged += textBox1_TextChanged;
+            lettersBox.KeyPress += lettersBox_KeyPress;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(273, 15);
+            label1.TabIndex = 1;
+            label1.Text = "zadejte písmena, ze kterých se budou skládat slova";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(lettersBox);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox lettersBox;
+        private Label label1;
     }
 }
