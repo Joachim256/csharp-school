@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            filePath = new TextBox();
+            saveBtn = new Button();
+            loadBtn = new Button();
             groupBox1 = new GroupBox();
+            appendOption = new RadioButton();
             radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            textBox2 = new TextBox();
+            contentEditor = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,82 +48,84 @@
             label1.TabIndex = 0;
             label1.Text = "Cesta k souboru:";
             // 
-            // textBox1
+            // filePath
             // 
-            textBox1.Location = new Point(126, 20);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 23);
-            textBox1.TabIndex = 1;
+            filePath.Location = new Point(126, 20);
+            filePath.Name = "filePath";
+            filePath.Size = new Size(240, 23);
+            filePath.TabIndex = 1;
             // 
-            // button1
+            // saveBtn
             // 
-            button1.Location = new Point(12, 63);
-            button1.Name = "button1";
-            button1.Size = new Size(141, 36);
-            button1.TabIndex = 2;
-            button1.Text = "Uložit do souboru";
-            button1.UseVisualStyleBackColor = true;
+            saveBtn.Location = new Point(12, 63);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(141, 36);
+            saveBtn.TabIndex = 2;
+            saveBtn.Text = "Uložit do souboru";
+            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
-            // button2
+            // loadBtn
             // 
-            button2.Location = new Point(159, 63);
-            button2.Name = "button2";
-            button2.Size = new Size(146, 36);
-            button2.TabIndex = 3;
-            button2.Text = "Načíst ze souboru";
-            button2.UseVisualStyleBackColor = true;
+            loadBtn.Location = new Point(159, 63);
+            loadBtn.Name = "loadBtn";
+            loadBtn.Size = new Size(146, 36);
+            loadBtn.TabIndex = 3;
+            loadBtn.Text = "Načíst ze souboru";
+            loadBtn.UseVisualStyleBackColor = true;
+            loadBtn.Click += loadBtn_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(radioButton2);
+            groupBox1.Controls.Add(appendOption);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Location = new Point(12, 115);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(200, 100);
+            groupBox1.Size = new Size(141, 80);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "přidat/přepsat";
             // 
+            // appendOption
+            // 
+            appendOption.AutoSize = true;
+            appendOption.Location = new Point(6, 47);
+            appendOption.Name = "appendOption";
+            appendOption.Size = new Size(82, 19);
+            appendOption.TabIndex = 1;
+            appendOption.Text = "přidat data";
+            appendOption.UseVisualStyleBackColor = true;
+            // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(6, 22);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(94, 19);
+            radioButton1.Size = new Size(90, 19);
             radioButton1.TabIndex = 0;
             radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
+            radioButton1.Text = "přepsat data";
             radioButton1.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // contentEditor
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(6, 47);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(94, 19);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
-            radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(18, 221);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(498, 217);
-            textBox2.TabIndex = 6;
+            contentEditor.Location = new Point(18, 221);
+            contentEditor.Multiline = true;
+            contentEditor.Name = "contentEditor";
+            contentEditor.Size = new Size(498, 217);
+            contentEditor.TabIndex = 6;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(528, 450);
-            Controls.Add(textBox2);
+            Controls.Add(contentEditor);
             Controls.Add(groupBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(loadBtn);
+            Controls.Add(saveBtn);
+            Controls.Add(filePath);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
@@ -136,12 +138,12 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private Button button1;
-        private Button button2;
+        private TextBox filePath;
+        private Button saveBtn;
+        private Button loadBtn;
         private GroupBox groupBox1;
-        private RadioButton radioButton2;
+        private RadioButton appendOption;
         private RadioButton radioButton1;
-        private TextBox textBox2;
+        private TextBox contentEditor;
     }
 }
