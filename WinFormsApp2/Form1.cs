@@ -6,5 +6,12 @@ namespace WinFormsApp2
         {
             InitializeComponent();
         }
+
+        private void openFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() != DialogResult.OK) { return; }
+
+
+        }
     }
 }
