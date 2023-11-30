@@ -6,8 +6,32 @@ namespace WinFormsApp2
         {
             InitializeComponent();
         }
+        private List<String> dictionary = new List<String>();
         private List<char> letters = new List<char>();
         private bool editing = false;
+        private List<String> foundWords = new List<String>();
+        private void loadDictionary()
+        {
+            try
+            {
+                using (var sr = new StreamReader(@"..\..\..\..\slovnik.txt"))
+                {
+                    string word;
+                    while ((word = sr.ReadLine()) != null)
+                    {
+                        dictionary.Add(word);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Nepodaøilo se otevøít soubor se slovníkem slov.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            loadDictionary();
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (editing) { return; }
@@ -31,10 +55,11 @@ namespace WinFormsApp2
             lettersBox.SelectionLength = 0;
 
             editing = false;
+            updateList();
         }
         private void lettersBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar !=  (char)8) { return; }
+            if (e.KeyChar != (char)8) { return; }
             if (editing) { return; }
             editing = true;
             int pos = (lettersBox.SelectionStart + 1) / 2 - 1;
@@ -47,6 +72,40 @@ namespace WinFormsApp2
             lettersBox.SelectionStart = pos * 2;
             lettersBox.SelectionLength = 0;
             editing = false;
+            updateList();
+        }
+        private void updateList()
+        {
+            filterDictionary();
+            renderFoundWords();
+        }
+        private void filterDictionary()
+        {
+            foundWords.Clear();
+            foreach (string word in dictionary)
+            {
+                bool badWord = false;
+                foreach (char c in word)
+                {
+                    if (!letters.Contains(c))
+                    {
+                        badWord = true;
+                        break;
+                    }
+                }
+                if (!badWord)
+                {
+                    foundWords.Add(word);
+                }
+            }
+        }
+        private void renderFoundWords()
+        {
+            foundWordsListBox.Items.Clear();
+            foreach (string word in foundWords)
+            {
+                foundWordsListBox.Items.Add(word);
+            }
         }
     }
 }

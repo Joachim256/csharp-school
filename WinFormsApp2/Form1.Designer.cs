@@ -30,6 +30,8 @@
         {
             lettersBox = new TextBox();
             label1 = new Label();
+            foundWordsListBox = new ListBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // lettersBox
@@ -50,15 +52,36 @@
             label1.TabIndex = 1;
             label1.Text = "zadejte písmena, ze kterých se budou skládat slova";
             // 
+            // foundWordsListBox
+            // 
+            foundWordsListBox.FormattingEnabled = true;
+            foundWordsListBox.ItemHeight = 15;
+            foundWordsListBox.Location = new Point(341, 36);
+            foundWordsListBox.Name = "foundWordsListBox";
+            foundWordsListBox.Size = new Size(196, 274);
+            foundWordsListBox.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(374, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(133, 15);
+            label2.TabIndex = 3;
+            label2.Text = "seznam nalezených slov";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(613, 337);
+            Controls.Add(label2);
+            Controls.Add(foundWordsListBox);
             Controls.Add(label1);
             Controls.Add(lettersBox);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Vlastní slovník";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -67,5 +90,7 @@
 
         private TextBox lettersBox;
         private Label label1;
+        private ListBox foundWordsListBox;
+        private Label label2;
     }
 }
