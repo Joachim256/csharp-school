@@ -107,5 +107,21 @@ namespace WinFormsApp2
                 foundWordsListBox.Items.Add(word);
             }
         }
+
+        private void saveWords_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var sw = new StreamWriter(@"..\..\..\..\novy.txt"))
+                {
+                    sw.WriteLine(String.Join("\r\n", foundWords.ToArray()));
+                }
+                MessageBox.Show("Úspìšnì uloženo do souboru novy.txt", "Uloženo do souboru", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Nepodaøilo se uložit soubor.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -32,6 +32,7 @@
             label1 = new Label();
             foundWordsListBox = new ListBox();
             label2 = new Label();
+            saveWords = new Button();
             SuspendLayout();
             // 
             // lettersBox
@@ -70,11 +71,22 @@
             label2.TabIndex = 3;
             label2.Text = "seznam nalezených slov";
             // 
+            // saveWords
+            // 
+            saveWords.Location = new Point(374, 316);
+            saveWords.Name = "saveWords";
+            saveWords.Size = new Size(133, 23);
+            saveWords.TabIndex = 4;
+            saveWords.Text = "Uložit do souboru";
+            saveWords.UseVisualStyleBackColor = true;
+            saveWords.Click += saveWords_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(613, 337);
+            ClientSize = new Size(613, 371);
+            Controls.Add(saveWords);
             Controls.Add(label2);
             Controls.Add(foundWordsListBox);
             Controls.Add(label1);
@@ -92,5 +104,6 @@
         private Label label1;
         private ListBox foundWordsListBox;
         private Label label2;
+        private Button saveWords;
     }
 }
