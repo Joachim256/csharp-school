@@ -116,6 +116,7 @@
             Controls.Add(openFile);
             Name = "Form1";
             Text = "Informace o souboru";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
