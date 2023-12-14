@@ -2,7 +2,7 @@
 	private static void Main(string[] args){
 		int[] arr = new int[100];
 		generateData(ref arr);
-        selectSort(ref arr);
+        insertSort(ref arr);
 		for(int i = 1; i < arr.Length; i++) { Console.WriteLine(arr[i]); }
 	}
 	private static void generateData(ref int[] array)
@@ -20,9 +20,9 @@
 			r = rand.Next(1, i);
 			// swap r-th & i-th element
 			int tmp = array[r];
-            array[r] = array[i];
+			array[r] = array[i];
 			array[i] = tmp;
-        }
+		}
 	}
 	private static void selectSort(ref int[] arr)
 	{
@@ -37,6 +37,21 @@
 			int tmp = arr[min];
 			arr[min] = arr[s];
 			arr[s] = tmp;
-        }
+		}
+	}
+	private static void insertSort(ref int[] arr)
+	{
+		for(int s = 2; s < arr.Length; s++)
+		{
+			arr[0] = arr[s]; // zarážka
+			int i = s-1;
+			while (arr[0] < arr[i])
+			{
+				// copy i up
+				arr[i+1] = arr[i];
+				i--;
+			}
+			arr[i+1] = arr[0];
+		}
 	}
 }
