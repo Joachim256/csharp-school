@@ -21,17 +21,23 @@ namespace WinFormsApp2
         {
             updateTime();
         }
-        TimeSpan countdown;
+        DateTime countdown;
         private void btnStartCountdown_Click(object sender, EventArgs e)
         {
-            countdown = new TimeSpan(0, inputTime.Value.Minute, inputTime.Value.Second);
+            countdown = DateTime.Now + new TimeSpan(0, inputTime.Value.Minute, inputTime.Value.Second);
             timerCountdown.Enabled = true;
+            btnStartCountdown.Enabled = false;
         }
         private void timerCountdown_Tick(object sender, EventArgs e)
         {
-            // todo: check if time == 0
-            countdown.Add(new TimeSpan(-1));
-            labelCountdown.Text = countdown.ToString("mm:ss.fff"); // todo: fix "String was not in a correct format" error
+            TimeSpan left = countdown - DateTime.Now;
+            if(left.TotalMilliseconds < 0)
+            {
+                left = new TimeSpan();
+                timerCountdown.Enabled = false;
+                btnStartCountdown.Enabled = true;
+            }
+            labelCountdown.Text = left.ToString(@"mm\:ss\.fff");
         }
     }
 }
