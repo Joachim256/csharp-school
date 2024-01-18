@@ -1,13 +1,13 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
-		int[] arr = new int[100];
+		int[] arr = new int[10];
 		generateData(ref arr);
 		quickSort(ref arr);
 		for(int i = 0; i < arr.Length; i++) { Console.WriteLine(arr[i]); }
 	}
 	private static void generateData(ref int[] array)
 	{
-		for(int i = 0; i < 100; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			array[i] = i;
 		}
@@ -15,7 +15,7 @@
 		Random rand = new Random();
 
 		int r;
-		for(int i = 99; i > 0; i--)
+		for(int i = 9; i > 0; i--)
 		{
 			r = rand.Next(0, i);
 			// swap r-th & i-th element
@@ -37,10 +37,13 @@
 			while (arr[i] < pivot) i++;
 			while (arr[j] > pivot) j--;
 
-			// swap i-th & j-th element
-			int tmp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = tmp;
+			if (i <= j) {
+				// swap i-th & j-th element
+				int tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+				i++; j--;
+			}
 		} while (i < j);
 
         if (start < j) { quickySort(ref arr, start, j); }
