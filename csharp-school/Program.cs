@@ -1,13 +1,13 @@
 ﻿internal class Program{
 	private static void Main(string[] args){
-		int[] arr = new int[10];
+		int[] arr = new int[1000];
 		generateData(ref arr);
 		quickSort(ref arr);
 		for(int i = 0; i < arr.Length; i++) { Console.WriteLine(arr[i]); }
 	}
 	private static void generateData(ref int[] array)
 	{
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 1000; i++)
 		{
 			array[i] = i;
 		}
@@ -15,7 +15,7 @@
 		Random rand = new Random();
 
 		int r;
-		for(int i = 9; i > 0; i--)
+		for(int i = 999; i > 0; i--)
 		{
 			r = rand.Next(0, i);
 			// swap r-th & i-th element
