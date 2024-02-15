@@ -94,6 +94,7 @@
             radioButtonCar1.TabStop = true;
             radioButtonCar1.Text = "auto1";
             radioButtonCar1.UseVisualStyleBackColor = true;
+            radioButtonCar1.CheckedChanged += radioButtonCar1_CheckedChanged;
             // 
             // radioButtonCar2
             // 
@@ -105,6 +106,7 @@
             radioButtonCar2.TabStop = true;
             radioButtonCar2.Text = "auto2";
             radioButtonCar2.UseVisualStyleBackColor = true;
+            radioButtonCar2.CheckedChanged += radioButtonCar2_CheckedChanged;
             // 
             // label2
             // 
@@ -157,6 +159,7 @@
             driveBtn.TabIndex = 11;
             driveBtn.Text = "Jet";
             driveBtn.UseVisualStyleBackColor = true;
+            driveBtn.Click += driveBtn_Click;
             // 
             // tankBtn
             // 
@@ -166,6 +169,7 @@
             tankBtn.TabIndex = 12;
             tankBtn.Text = "Tankovat";
             tankBtn.UseVisualStyleBackColor = true;
+            tankBtn.Click += tankBtn_Click;
             // 
             // label5
             // 
