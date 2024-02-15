@@ -197,6 +197,7 @@
             Controls.Add(labelAuto);
             Name = "Form1";
             Text = "Autodoprava";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)driveInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)tankInput).EndInit();
             ResumeLayout(false);
