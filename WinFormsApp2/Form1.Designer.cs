@@ -43,6 +43,7 @@
             kinoPictureBox.TabIndex = 0;
             kinoPictureBox.TabStop = false;
             kinoPictureBox.Paint += kinoPictureBox_Paint;
+            kinoPictureBox.MouseClick += kinoPictureBox_MouseClick;
             // 
             // loadBtn
             // 
