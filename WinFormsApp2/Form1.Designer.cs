@@ -32,6 +32,10 @@
             loadBtn = new Button();
             saveBtn = new Button();
             filenameLabel = new Label();
+            saveKinoDialog = new SaveFileDialog();
+            saveKinoDialog.Filter = "Soubory Sálu (*.sal)|*.sal";
+            saveKinoDialog.DefaultExt = "sal";
+            saveKinoDialog.AddExtension = true;
             ((System.ComponentModel.ISupportInitialize)kinoPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -62,6 +66,7 @@
             saveBtn.TabIndex = 2;
             saveBtn.Text = "Uložit sál";
             saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
             // filenameLabel
             // 
@@ -94,5 +99,6 @@
         private Button loadBtn;
         private Button saveBtn;
         private Label filenameLabel;
+        private SaveFileDialog saveKinoDialog;
     }
 }
