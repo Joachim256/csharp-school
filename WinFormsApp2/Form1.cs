@@ -56,24 +56,55 @@ namespace WinFormsApp2
 			{
 				using (var stream = File.Open(filename, FileMode.Create))
 				{
-					using (var sw = new BinaryWriter(stream, Encoding.UTF8, false)){
+					using (var sw = new BinaryWriter(stream, Encoding.UTF8, false))
+					{
 						sw.Write((byte)pocetSedadel);
 						sw.Write((byte)pocetRad);
 
 						bool[] flat = new bool[pocetRad * pocetSedadel];
-						for(int y = 0; y < pocetRad; y++)
+						for (int y = 0; y < pocetRad; y++)
 						{
-							for(int x = 0; x < pocetSedadel; x++)
+							for (int x = 0; x < pocetSedadel; x++)
 							{
 								flat[y * pocetSedadel + x] = sedadla[x, y];
 							}
 						}
 						byte[] buffer = new byte[(int)Math.Ceiling((float)(pocetRad * pocetSedadel) / 8)];
-						for(int i = 0; i < flat.Length; i++)
+						for (int i = 0; i < flat.Length; i++)
 						{
 							buffer[i / 8] |= (byte)((flat[i] ? 1 : 0) << (i % 8));
 						}
 						sw.Write(buffer);
+					}
+				}
+			}
+			public void Load(string filename)
+			{
+				using (var stream = File.Open(filename, FileMode.Open))
+				{
+					using (var sr = new BinaryReader(stream, Encoding.UTF8, false))
+					{
+						int pocetSedadel = sr.ReadByte();
+						int pocetRad = sr.ReadByte();
+
+						byte[] seatData = sr.ReadBytes((int)Math.Ceiling((float)(pocetRad * pocetSedadel) / 8));
+						bool[] flat = new bool[pocetRad * pocetSedadel];
+						for (int i = 0; i < flat.Length; i++)
+						{
+							flat[i] = (seatData[i / 8] & (1 << (i % 8))) > 0;
+						}
+						bool[,] loadedSedadla = new bool[pocetSedadel, pocetRad];
+						int j = 0;
+						for (int y = 0; y < pocetRad; y++)
+						{
+							for (int x = 0; x < pocetSedadel; x++)
+							{
+								loadedSedadla[x, y] = flat[j++];
+							}
+						}
+						this.pocetRad = pocetRad;
+						this.pocetSedadel = pocetSedadel;
+						this.sedadla = loadedSedadla;
 					}
 				}
 			}
@@ -101,6 +132,22 @@ namespace WinFormsApp2
 
 			filenameLabel.Text = saveKinoDialog.FileName;
 			kino.Save(saveKinoDialog.FileName);
+		}
+
+		private void loadBtn_Click(object sender, EventArgs e)
+		{
+			if (openKinoDialog.ShowDialog() != DialogResult.OK) { return; }
+
+			try
+			{
+				kino.Load(openKinoDialog.FileName);
+				filenameLabel.Text = openKinoDialog.FileName;
+				kinoPictureBox.Refresh();
+			}
+			catch
+			{
+				MessageBox.Show("Nastala chyba pøi otevírání souboru", "Kino nelze otevøít", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
