@@ -112,7 +112,7 @@ namespace WinFormsApp2
 
 		private void KinoForm_Load(object sender, EventArgs e)
 		{
-			kino = new Kinosal(4,4);
+			kino = new Kinosal();
 			filenameLabel.Text = "Nový sál";
 		}
 
