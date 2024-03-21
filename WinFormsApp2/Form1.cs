@@ -20,7 +20,8 @@ namespace WinFormsApp2
         }
         private void Say(object sender, EventArgs e)
         {
-            // todo: reference the clicked component
+            Label l = (Label)sender;
+            MessageBox.Show(l.Text);
         }
     }
 }
